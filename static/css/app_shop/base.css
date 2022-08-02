@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap');
 
 body {
+  margin: 8px 0 0;
   background: url("/static/img/app_shop/background.png"), #D9D9D9;
   background-size: cover;
 }
@@ -77,5 +78,48 @@ body {
   filter: invert(28%) sepia(0%) saturate(1785%) hue-rotate(163deg) brightness(107%) contrast(81%);
 }
 
+.footer {
+  width: 100%;
+  height: 322px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #000000;
+}
 
+.footer__container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  width: 50%;
+}
 
+.footer__logo {
+  display: flex;
+  align-items: center;
+}
+
+.footer__logo-text {
+  margin-left: 34px;
+}
+
+.footer__nav-bar {
+  display: flex;
+  align-items: center;
+}
+
+.footer__contact-address-text {
+  margin: 0;
+}
+
+.footer__icon-link-list {
+  width: 222px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.footer__icon-link-item {
+  display: flex;
+}
