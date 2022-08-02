@@ -5,8 +5,46 @@
   <meta charset="UTF-8">
   <title>{% block title %}{% endblock %}</title>
   <link rel="stylesheet" href="{% static 'css/app_shop/base.css' %}">
+  <style>
+
+  </style>
 </head>
 <body>
-{% block content %}{% endblock %}
+  <header class="header">
+    <a href="#"><div class="header__logo">
+      <div class="header__logo-img">
+        <img src="{% static "svg/app_shop/logo.svg" %}" alt="logo">
+      </div>
+      <div class="header__logo-text">
+        <img src="{% static "svg/app_shop/logo-text.svg" %}" alt="logo">
+      </div>
+    </div></a>
+    <nav class="nav-bar">
+      <ul class="nav-bar__text-link-list">
+        <li class="nav-bar__text-link-item">
+          <a class="nav-bar__text-link" href="#">Меню</a>
+        </li>
+        <li class="nav-bar__text-link-item">
+          <a class="nav-bar__text-link" href="#">Зона доставки</a>
+        </li>
+        <li class="nav-bar__text-link-item">
+          <a class="nav-bar__text-link" href="#">Вакансии</a>
+        </li>
+        <li class="nav-bar__text-link-item">
+          <a class="nav-bar__text-link" href="#">Контакты</a>
+        </li>
+      </ul>
+      <div class="nav-bar__black-delimiter"></div>
+      <ul class="nav-bar__icon-link-list">
+        <li class="nav-bar__icon-link-item">
+          <a href="#"><img src="{% static "svg/app_shop/profile-icon.svg" %}" alt="profile-icon"></a>
+        </li>
+        <li class="nav-bar__icon-link-item">
+          <a href="#"><img src="{% static "svg/app_shop/cart-icon.svg" %}" alt="cart-icon"></a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+  {% block content %}{% endblock %}
 </body>
 </html>
