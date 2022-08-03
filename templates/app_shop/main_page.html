@@ -1,7 +1,21 @@
 {% extends 'app_shop/base.html' %}
+
+{% block title %}Бесплатная доставка суши, роллов | Ninja Sushi - Меню{% endblock %}
 {% block content %}
-{% for product in products %}
-  <p>{{ product.name }}</p>
-  <img src="{{ product.image.url }}" alt="product image">
-{% endfor %}
+  <div class="description">
+    <h1 class="description__info">ДОСТАВКА СУШИ И РОЛЛОВ</h1>
+    <p class="description__promo">Закажи уже сейчас и получи <span class="red-text">скидку 10%</span> на следующий заказ</p>
+    <a href="#categories" class="description__order-button-link">
+      <div class="description__order-button">
+        <p class="description__button-text">Заказать</p>
+      </div>
+    </a>
+  </div>
+  <ul class="categories" id="categories">
+  {% for category in categories %}
+    <li class="categories__item">
+      <a href="#" class="categories__link">{{ category }}</a>
+    </li>
+  {% endfor %}
+  </ul>
 {% endblock %}

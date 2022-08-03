@@ -1,9 +1,12 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jost:wght@400;600&display=swap');
 
 body {
   margin: 8px 0 0;
   background: url("/static/img/app_shop/background.png"), #D9D9D9;
   background-size: cover;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
 
 .header {
@@ -21,7 +24,7 @@ body {
 }
 
 .nav-bar {
-  margin-top: 10px;
+  margin-top: 15px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -37,7 +40,7 @@ body {
 .nav-bar__text-link-item {
   margin: 0 25px;
   list-style-type: none;
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Jost', sans-serif;
   font-style: normal;
   font-weight: 600;
   font-size: 24px;
@@ -92,7 +95,7 @@ body {
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
-  width: 55%;
+  width: calc(50% + 100px);
 }
 
 .footer__logo {
@@ -116,7 +119,7 @@ body {
 
 .footer__text-link {
   transition: 0.5s;
-  font-family: 'Open-Sans', sans-serif;
+  font-family: 'Jost', sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
@@ -137,7 +140,7 @@ body {
 
 .footer__contact-phone-link {
   transition: 0.5s;
-  font-family: 'Open-Sans', sans-serif;
+  font-family: 'Jost', sans-serif;
   font-style: normal;
   font-weight: 600;
   font-size: 24px;
@@ -152,7 +155,7 @@ body {
 
 .footer__contact-address-text {
   margin: 0;
-  font-family: 'Open-Sans', sans-serif;
+  font-family: 'Jost', sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
@@ -163,13 +166,13 @@ body {
 
 .footer__policies_list {
   list-style-type: none;
-  padding-inline-start: 125px;
+  padding: 0;
 }
 
 .footer__policy-link {
   transition: 0.5s;
   text-decoration: none;
-  font-family: 'Open-Sans', sans-serif;
+  font-family: 'Jost', sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 14px;

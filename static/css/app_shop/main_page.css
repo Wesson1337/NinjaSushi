@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=Jost:wght@400;600&display=swap');
+
+@font-face {
+  font-family: "Geometria";
+  src: url("/static/fonts/app_shop/geometria_extrabold.otf");
+}
+
+.description {
+  width: calc(40% + 200px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.description__info {
+  text-align: center;
+  margin: 176px 0 0;
+  font-family: 'Geometria', sans-serif;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 96px;
+  line-height: 115px;
+  
+  color: rgba(0, 0, 0, 0.84);
+}
+
+.description__promo {
+  margin: 0 0 35px;
+  font-family: 'Jost', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 26px;
+  color: rgba(0, 0, 0, 0.84);
+}
+
+.red-text {
+  color: #ED1B24;
+}
+
+.description__order-button {
+  width: 432px;
+  height: 147px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  background: #FFFFFF;
+  box-shadow: 0 0 78px rgba(170, 106, 106, 0.2);
+  border-radius: 123px;
+}
+
+.description__order-button-link {
+  transition: 0.5s ease-out;
+  text-decoration: none;
+}
+
+.description__order-button-link:hover {
+  filter: invert(8%);
+}
+
+.description__button-text {
+  font-family: 'Jost', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 48px;
+  line-height: 62px;
+  color: rgba(0, 0, 0, 0.84);
+}
+
+.categories {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0;
+  margin-top: 200px;
+  list-style-type: none;
+}
+
+.categories__item {
+  margin: 0 16px;
+}
+
+.categories__link {
+  text-decoration: none;
+  transition: 0.5s;
+  font-family: 'Jost', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 26px;
+  
+  color: #000000;
+}
+
+.categories__link:hover {
+  filter: invert(30%);
+}
