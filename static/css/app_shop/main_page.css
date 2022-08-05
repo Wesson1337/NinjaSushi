@@ -97,3 +97,8 @@
 .categories__link:hover {
   filter: invert(30%);
 }
+
+.cards__card {
+  width: 310px;
+  height: 383px;
+}

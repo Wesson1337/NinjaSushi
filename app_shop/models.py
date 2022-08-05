@@ -11,9 +11,6 @@ class Category(models.Model):
     def __str__(self):
         return f'{self.name}'
 
-    def __call__(self):
-        return f'{self.name}'
-
 
 class Product(models.Model):
     name = models.CharField(max_length=255, verbose_name='название')
