@@ -1,8 +1,15 @@
-@import url('https://fonts.googleapis.com/css2?family=Jost:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600&display=swap');
 
 @font-face {
   font-family: "Geometria";
   src: url("/static/fonts/app_shop/geometria_extrabold.otf");
+  font-weight: 800;
+}
+
+@font-face {
+  font-family: "Geometria";
+  src: url("/static/fonts/app_shop/geometria_bold.otf");
+  font-weight: 700;
 }
 
 .description {
@@ -98,7 +105,84 @@
   filter: invert(30%);
 }
 
-.cards__card {
-  width: 310px;
-  height: 383px;
+
+.cards__category {
+  margin: 50px 20px 21px;
+  font-family: 'Geometria', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 48px;
+  line-height: 60px;
+  color: rgba(0, 0, 0, 0.84);
 }
+
+.cards__container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.cards__card {
+  margin: 20px 20px;
+  padding: 0 19px;
+  width: 272px;
+  height: 383px;
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
+  background: #FFFFFF;
+  box-shadow: 0 4px 66px rgba(191, 188, 188, 0.36);
+  border-radius: 24px;
+}
+
+.cards__product-image {
+  width: 233px;
+  height: 188px;
+  margin: 0 19px;
+}
+
+.cards__product-name {
+  margin: 0 0 6px;
+  font-family: 'Geometria', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 22px;
+
+  color: #000000;
+}
+
+.cards__product-characteristics {
+  margin: 0 0 6px;
+  font-family: 'Jost', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 14px;
+  
+  color: rgba(133, 133, 133, 0.5);
+}
+
+.cards__product-composition {
+  margin: 0;
+  font-family: 'Jost', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 21px;
+  
+  color: #4A4A4A;
+}
+
+.cards__product-price {
+  margin: auto 0 26px;
+  display: flex;
+  font-family: 'Geometria', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 40px;
+  
+  color: #000000;
+}
+

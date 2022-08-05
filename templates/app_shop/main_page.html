@@ -22,16 +22,17 @@
   {% for category in categories %}
     <div class="cards">
       <h2 class="cards__category">{{ category.name }}</h2>
+      <div class="cards__container">
       {% for product in products|in_category:category %}
         <div class="cards__card">
           <img class="cards__product-image" src="{{ product.image }}" alt="image">
           <p class="cards__product-name">{{ product.name }}</p>
           <p class="cards__product-characteristics">{{ product.weight }} г., {{ product.amount }} шт.</p>
-          <p class="cards__product-composition">{{ product.compostition }}</p>
+          <p class="cards__product-composition">{{ product.composition }}</p>
           <p class="cards__product-price">{{ product.price }} ₽</p>
-          <button class="cards__cart-button"></button>
         </div>
       {% endfor %}
+      </div>
     </div>
   {% endfor %}
 {% endblock %}
