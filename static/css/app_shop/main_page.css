@@ -13,7 +13,7 @@
 }
 
 .description {
-  width: calc(40% + 200px);
+  max-width: calc(40% + 200px);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -86,7 +86,7 @@
 }
 
 .categories__item {
-  margin: 0 16px;
+  margin: 0 20px;
 }
 
 .categories__link {
@@ -123,7 +123,7 @@
 }
 
 .cards__card {
-  margin: 20px 20px;
+  margin: 10px 10px;
   padding: 0 19px;
   width: 272px;
   height: 383px;
@@ -136,6 +136,7 @@
 }
 
 .cards__product-image {
+  object-fit: contain;
   width: 233px;
   height: 188px;
   margin: 0 19px;
@@ -168,8 +169,8 @@
   font-family: 'Jost', sans-serif;
   font-style: normal;
   font-weight: 500;
-  font-size: 16px;
-  line-height: 21px;
+  font-size: 15px;
+  line-height: 16px;
   
   color: #4A4A4A;
 }

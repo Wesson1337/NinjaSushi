@@ -15,6 +15,10 @@ body {
   flex-wrap: wrap;
 }
 
+.header__logo-text {
+  margin-top: 18px;
+}
+
 .header__logo {
   width: 380px;
   height: 105px;
@@ -93,9 +97,9 @@ body {
 .footer__container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: space-evenly;
   align-items: center;
-  width: calc(50% + 100px);
+  width: calc(55% + 150px);
 }
 
 .footer__logo {
@@ -105,7 +109,8 @@ body {
 }
 
 .footer__logo-text {
-  margin-left: 34px;
+  margin-left: 25px;
+  margin-top: 18px;
 }
 
 .footer__nav-bar {
@@ -113,8 +118,14 @@ body {
   align-items: center;
 }
 
+.footer__text-link-list {
+  padding: 0;
+  margin: 0 20px
+}
+
 .footer__text-link-item {
   list-style-type: none;
+  margin: 5px 15px;
 }
 
 .footer__text-link {
