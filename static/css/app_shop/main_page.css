@@ -117,9 +117,10 @@
 }
 
 .cards__container {
+  max-width: 1320px;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: flex-start;
 }
 
 .cards__card {

@@ -15,25 +15,27 @@
   <ul class="categories" id="categories">
   {% for category in categories %}
     <li class="categories__item">
-      <a href="#" class="categories__link">{{ category }}</a>
+      <a href="{{ category.id }}#categories" class="categories__link">{{ category }}</a>
     </li>
   {% endfor %}
   </ul>
-  {% for category in categories %}
-    <div class="cards">
-      <h2 class="cards__category">{{ category.name }}</h2>
-      <div class="cards__container">
-      {% for product in products|in_category:category|slice:":4" %}
-        {% comment %}TODO Убрать затычку сделать вместо нее слайдер{% endcomment %}
-        <div class="cards__card">
-          <img class="cards__product-image" src="{{ product.image }}" alt="image">
-          <p class="cards__product-name">{{ product.name }}</p>
-          <p class="cards__product-characteristics">{{ product.weight }} г., {{ product.amount }} шт.</p>
-          <p class="cards__product-composition">{{ product.composition }}</p>
-          <p class="cards__product-price">{{ product.price }}₽</p>
+  {% block cards %}
+    {% for category in categories %}
+      <div class="cards">
+        <h2 class="cards__category">{{ category.name }}</h2>
+        <div class="cards__container">
+        {% for product in products|in_category:category|slice:":4" %}
+          {% comment %}TODO Убрать затычку сделать вместо нее слайдер{% endcomment %}
+          <div class="cards__card">
+            <img class="cards__product-image" src="{{ product.image }}" alt="image">
+            <p class="cards__product-name">{{ product.name }}</p>
+            <p class="cards__product-characteristics">{{ product.weight }} г., {{ product.amount }} шт.</p>
+            <p class="cards__product-composition">{{ product.composition }}</p>
+            <p class="cards__product-price">{{ product.price }}₽</p>
+          </div>
+        {% endfor %}
         </div>
-      {% endfor %}
       </div>
-    </div>
-  {% endfor %}
+    {% endfor %}
+  {% endblock %}
 {% endblock %}
