@@ -4,23 +4,23 @@
 <head>
   <meta charset="UTF-8">
   <title>{% block title %}{% endblock %}</title>
-  <link rel="stylesheet" href="{% static 'css/app_shop/base.css' %}">
+  <link rel="stylesheet" href="{% static 'css/base.css' %}">
   <link rel="stylesheet" href="{% static 'css/app_shop/main_page.css' %}">
 </head>
 <body>
   <header class="header">
-    <a href="/"><div class="header__logo">
+    <a href="/static"><div class="header__logo">
       <div class="header__logo-img">
-        <img src="{% static "svg/app_shop/logo.svg" %}" alt="logo">
+        <img src="{% static "svg/logo.svg" %}" alt="logo">
       </div>
       <div class="header__logo-text">
-        <img src="{% static "svg/app_shop/logo-text.svg" %}" alt="logo">
+        <img src="{% static "svg/logo-text.svg" %}" alt="logo">
       </div>
     </div></a>
     <nav class="nav-bar">
       <ul class="nav-bar__text-link-list">
         <li class="nav-bar__text-link-item">
-          <a class="nav-bar__text-link" href="/">Меню</a>
+          <a class="nav-bar__text-link" href="/static">Меню</a>
         </li>
         <li class="nav-bar__text-link-item">
           <a class="nav-bar__text-link" href="#">Зона доставки</a>
@@ -35,10 +35,10 @@
       <div class="nav-bar__black-delimiter"></div>
       <ul class="nav-bar__icon-link-list">
         <li class="nav-bar__icon-link-item">
-          <a href="#"><img src="{% static "svg/app_shop/profile-icon.svg" %}" alt="profile-icon"></a>
+          <a href="#"><img src="{% static "svg/profile-icon.svg" %}" alt="profile-icon"></a>
         </li>
         <li class="nav-bar__icon-link-item">
-          <a href="#"><img src="{% static "svg/app_shop/cart-icon.svg" %}" alt="cart-icon"></a>
+          <a href="#"><img src="{% static "svg/cart-icon.svg" %}" alt="cart-icon"></a>
         </li>
       </ul>
     </nav>
@@ -48,16 +48,16 @@
     <div class="footer__container">
       <div class="footer__logo">
         <div class="footer__logo-img">
-          <img src="{% static "svg/app_shop/logo.svg" %}" alt="logo">
+          <img src="{% static "svg/logo.svg" %}" alt="logo">
         </div>
         <div class="footer__logo-text">
-          <img src="{% static "svg/app_shop/logo-text_white.svg" %}" alt="logo">
+          <img src="{% static "svg/logo-text_white.svg" %}" alt="logo">
         </div>
       </div>
       <div class="footer__nav-bar">
         <ul class="footer__text-link-list">
           <li class="footer__text-link-item">
-            <a class="footer__text-link" href="/">Меню</a>
+            <a class="footer__text-link" href="/static">Меню</a>
           </li>
           <li class="footer__text-link-item">
             <a class="footer__text-link" href="#">Зона доставки</a>
@@ -98,13 +98,13 @@
       </ul>
       <ul class="footer__icon-link-list">
         <li class="footer__icon-link-item">
-          <a href="https://web.telegram.org/"><img src="{% static "svg/app_shop/telegram.svg" %}" alt="telegram"></a>
+          <a href="https://web.telegram.org/"><img src="{% static "svg/telegram.svg" %}" alt="telegram"></a>
         </li>
         <li class="footer__icon-link-item">
-          <a href="https://www.instagram.com/"><img src="{% static "svg/app_shop/instagram.svg" %}" alt="instagram"></a>
+          <a href="https://www.instagram.com/"><img src="{% static "svg/instagram.svg" %}" alt="instagram"></a>
         </li>
         <li class="footer__icon-link-item">
-          <a href="https://vk.com/"><img src="{% static "svg/app_shop/vk-icon.svg" %}" alt="vk"></a>
+          <a href="https://vk.com/"><img src="{% static "svg/vk-icon.svg" %}" alt="vk"></a>
         </li>
       </ul>
     </div>
