@@ -188,3 +188,6 @@
   color: #000000;
 }
 
+.map__iframe {
+  border-radius: 27px;
+}

@@ -1,5 +1,6 @@
 {% extends 'app_shop/../base.html' %}
 {% load main_page_tags %}
+{% load static %}
 
 {% block title %}Бесплатная доставка суши, роллов | Ninja Sushi - Меню{% endblock %}
 {% block content %}
@@ -13,11 +14,11 @@
     </a>
   </div>
   <ul class="categories" id="categories">
-  {% for category in categories %}
-    <li class="categories__item">
-      <a href="{{ category.id }}#categories" class="categories__link">{{ category }}</a>
-    </li>
-  {% endfor %}
+    {% for category in categories %}
+      <li class="categories__item">
+        <a href="{{ category.id }}#categories" class="categories__link">{{ category }}</a>
+      </li>
+    {% endfor %}
   </ul>
   {% block cards %}
     {% for category in categories %}
@@ -38,4 +39,32 @@
       </div>
     {% endfor %}
   {% endblock %}
+  <div class="bottom-info">
+    <div class="bottom-info__block">
+      <p class="bottom-info__block-header">Контакты</p>
+      <p class="bottom-info__address">Россия, Московская область, Балашиха, микрорайон Новое Павлино, Косинское шоссе, 8</p>
+      <a href="tel:+79284432232" class="contacts__phone">+7 (928) 899 - 94 - 08</a>
+      <p class="bottom-info__working-hours">Режим работы с 11:00 до 23:00</p>
+    </div>
+    <div class="bottom-info__block">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2242.7486165877413!2d37.962177116268215!3d55.79760288056534!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x414acc6ac3f43535%3A0x8d0f1b9884942eea!2sProspekt%20Lenina%2C%2032%D0%94%2C%20Balashikha%2C%20Moskovskaya%20oblast&#39;%2C%20143900!5e0!3m2!1sen!2sru!4v1660661561174!5m2!1sen!2sru" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="bottom-info__map"></iframe>
+    </div>
+    <div class="bottom-info__block">
+      <p class="bottom-info__block-header">Получай скидки через рассылку</p>
+      <form method="post" class="bottom-info__email-newsletter">
+        {% csrf_token %}
+        <input type="email" placeholder="Ваша эл.почта">
+        <input type="submit" value="Подписаться">
+        <input type="checkbox" id="accept-checkbox" required>
+        <label for="accept-checkbox" class="bottom-info__accept-text">
+          Я хочу получать информацию о проводимых акциях и специальных предложениях
+        </label>
+      </form>
+    </div>
+    <div class="bottom-info__block">
+      <p class="bottom-info__block-header">Скачайте приложение</p>
+      <img src="{% static "img/app_shop/app-store-download.png" %}" alt="app-store">
+      <img src="{% static "img/app_shop/google-play-download.png" %}" alt="google-play">
+    </div>
+  </div>
 {% endblock %}
