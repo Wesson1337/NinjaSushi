@@ -105,9 +105,17 @@
   filter: invert(30%);
 }
 
+.cards {
+  margin: 0 10px;
+  max-width: 1320px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-items: center;
+}
+
 
 .cards__category {
-  margin: 50px 20px 21px;
+  margin: 50px 0 21px;
   font-family: 'Geometria', sans-serif;
   font-style: normal;
   font-weight: 700;
@@ -117,14 +125,13 @@
 }
 
 .cards__container {
-  max-width: 1320px;
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-start;
+  justify-content: space-evenly;
+  gap: 20px;
 }
 
 .cards__card {
-  margin: 10px 10px;
   padding: 0 19px;
   width: 272px;
   height: 383px;
@@ -188,6 +195,91 @@
   color: #000000;
 }
 
-.map__iframe {
+.bottom-info {
+  margin-top: 201px;
+  max-width: 1320px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.bottom-info__block {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 73px 67px;
+  gap: 20px;
+  width: 516px;
+  height: 373px;
+  background: #FFFFFF;
+  box-shadow: 0 4px 66px rgba(191, 188, 188, 0.36);
+  border-radius: 24px;
+}
+
+
+.bottom-info__block-header {
+  font-family: 'Geometria', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 90%;
+}
+
+.block-map {
+  width: 650px;
+  height: 519px;
+  padding: 0;
+}
+
+.bottom-info__map {
   border-radius: 27px;
+}
+
+.block-download {
+  align-items: center;
+  gap: 10px;
+}
+
+.header-download {
+  margin-bottom: 20px;
+}
+
+.bottom-info__download-img {
+  width: 350px;
+}
+
+.bottom-info__address {
+  margin-top: 0;
+  font-family: 'Jost', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 26px;
+  
+  color: #000000;
+}
+
+.bottom-info__phone {
+  transition: 0.5s;
+  font-family: 'Jost', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 31px;
+  color: #000000;
+  text-decoration: none;
+}
+
+.bottom-info__phone:hover {
+  filter: invert(30%);
+}
+
+.bottom-info__working-hours {
+  font-family: 'Jost', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 26px;
+  color: #000000;
 }
