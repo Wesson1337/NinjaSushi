@@ -184,7 +184,7 @@
 }
 
 .cards__product-price {
-  margin: auto 0 26px;
+  margin: 5px 0 0;
   display: flex;
   font-family: 'Geometria', sans-serif;
   font-style: normal;
@@ -193,6 +193,26 @@
   line-height: 40px;
   
   color: #000000;
+}
+
+.cards__wrapper {
+  margin: auto 0 26px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cards__add-to-cart-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  box-sizing: border-box;
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  
+  border: 1px solid #FFB7B7;
 }
 
 .bottom-info {
