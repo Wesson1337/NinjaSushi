@@ -1,4 +1,5 @@
 {% extends "app_shop/main_page.html" %}
+{% load static %}
 
 {% block cards %}
   <div class="cards">
@@ -10,7 +11,12 @@
         <p class="cards__product-name">{{ product.name }}</p>
         <p class="cards__product-characteristics">{{ product.weight }} г., {{ product.amount }} шт.</p>
         <p class="cards__product-composition">{{ product.composition }}</p>
-        <p class="cards__product-price">{{ product.price }}₽</p>
+        <div class="cards__wrapper">
+          <p class="cards__product-price">{{ product.price }}₽</p>
+          <div class="cards__add-to-cart-button">
+            <img src="{% static "svg/app_shop/add-to-cart-logo.svg" %}" alt="cart">
+          </div>
+        </div>
       </div>
     {% endfor %}
     </div>
