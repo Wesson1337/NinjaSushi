@@ -15,7 +15,7 @@ class Cart:
         self.cart = cart
 
     def add(self, product: Product) -> None:
-        """Add product or one unit of product in cart."""
+        """Add product or one unit of product to cart."""
 
         product_id = str(product.id)
         if product_id not in self.cart:
@@ -29,7 +29,10 @@ class Cart:
 
         product_id = str(product.id)
         if product_id in self.cart:
-            self.cart[product_id]['quantity'] -= 1
+            if self.cart[product_id]['quantity'] >= 1:
+                self.cart[product_id]['quantity'] -= 1
+            else:
+                del self.cart[product_id]
             self.save()
 
     def remove_product(self, product: Product) -> None:
@@ -40,13 +43,13 @@ class Cart:
             del self.cart[product_id]
             self.save()
 
-    def save(self):
+    def save(self) -> None:
         """Save cart in user session."""
 
         self.session[settings.CART_SESSION_ID] = self.cart
         self.session.modified = True
 
-    def __iter__(self):
+    def __iter__(self) -> dict:
         """Enumeration of elements in cart and receiving products from database."""
 
         product_ids = self.cart.keys()
@@ -63,12 +66,12 @@ class Cart:
 
         return sum(item['quantity'] for item in self.cart.values())
 
-    def get_total_price(self):
+    def get_total_price(self) -> int:
         """Counting the total price of products in cart."""
 
         return sum(item['price'] * item['quantity'] for item in self.cart.values())
 
-    def clear(self):
+    def clear(self) -> None:
         """Deleting cart from user session"""
 
         del self.session[settings.CART_SESSION_ID]
