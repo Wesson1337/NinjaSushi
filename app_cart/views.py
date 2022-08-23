@@ -41,4 +41,4 @@ def cart_clear(request) -> HttpResponseRedirect:
 
 def cart_view(request) -> HttpResponse:
     cart = Cart(request)
-    return render(request, 'cart/cart_page.html', context={'cart': cart})
+    return render(request, 'app_cart/cart_page.html', context={'cart': cart})

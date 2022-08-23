@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+  Бесплатная доставка суши, роллов | Ninja Sushi - Корзина
+{% endblock %}
+
+{% block content %}
+  <a href="{% url "app_cart:cart_clear" %}">Clear</a>
+  {% for item in cart %}
+    {% with product=item.product %}
+      <img src="{{ product.image.url }}" alt="img">
+      <p>{{ product.name }}</p>
+      <p>{{ item.quantity }}</p>
+      <p>{{ item.price }}</p>
+      <p>{{ item.total_price }}</p>
+    {% endwith %}
+  {% empty %}
+    Nothing here
+  {% endfor %}
+  <p>total: {{ cart.get_total_price }}</p>
+{% endblock %}

@@ -203,6 +203,7 @@
 }
 
 .cards__add-to-cart-button {
+  transition: 0.25s ease-out;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -213,6 +214,10 @@
   border-radius: 50%;
   
   border: 1px solid #FFB7B7;
+}
+
+.cards__add-to-cart-button:hover {
+  filter: drop-shadow(0 0 3px rgba(255, 183, 183, 1)) invert(5%);
 }
 
 .bottom-info {

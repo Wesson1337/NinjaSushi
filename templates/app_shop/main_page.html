@@ -28,15 +28,17 @@
         {% for product in products|in_category:category|slice:":4" %}
           {% comment %}TODO Убрать затычку сделать вместо нее слайдер{% endcomment %}
           <div class="cards__card">
-            <img class="cards__product-image" src="{{ product.image }}" alt="image">
+            <img class="cards__product-image" src="{{ product.image.url }}" alt="image">
             <p class="cards__product-name">{{ product.name }}</p>
             <p class="cards__product-characteristics">{{ product.weight }} г., {{ product.amount }} шт.</p>
             <p class="cards__product-composition">{{ product.composition }}</p>
             <div class="cards__wrapper">
               <p class="cards__product-price">{{ product.price }}₽</p>
-              <div class="cards__add-to-cart-button">
-                <img src="{% static "svg/app_shop/add-to-cart-logo.svg" %}" alt="cart">
-              </div>
+              <a href="{% url "app_cart:cart_add_product" product.id %}">
+                <div class="cards__add-to-cart-button">
+                  <img src="{% static "svg/app_shop/add-to-cart-logo.svg" %}" alt="cart">
+                </div>
+              </a>
             </div>
           </div>
         {% endfor %}
