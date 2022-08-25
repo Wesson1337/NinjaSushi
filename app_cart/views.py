@@ -27,7 +27,7 @@ def cart_remove_product(request, product_id: int) -> HttpResponseRedirect:
 
     cart = Cart(request)
     product = get_object_or_404(Product, id=product_id)
-    cart.remove_unit_of_product(product)
+    cart.remove_product(product)
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
 

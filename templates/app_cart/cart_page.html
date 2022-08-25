@@ -6,17 +6,34 @@
 {% endblock %}
 
 {% block content %}
-  <a href="{% url "app_cart:cart_clear" %}">Clear</a>
-  {% for item in cart %}
-    {% with product=item.product %}
-      <img src="{{ product.image.url }}" alt="img">
-      <p>{{ product.name }}</p>
-      <p>{{ item.quantity }}</p>
-      <p>{{ item.price }}</p>
-      <p>{{ item.total_price }}</p>
-    {% endwith %}
-  {% empty %}
-    Nothing here
-  {% endfor %}
-  <p>total: {{ cart.get_total_price }}</p>
+  <div class="order">
+    <p class="order__big-text">Мой заказ</p>
+    <a href="{% url 'app_cart:cart_clear' %}" class="order__clear-cart-link">Очистить корзину</a>
+    <div class="order__cards">
+      {% for item in cart %}
+        {% with product=item.product %}
+          <div class="order__product-card">
+            <img src="{{ product.image.url }}" alt="product-img" class="order__product-image">
+            <p class="order__big-text">{{ product.name }}</p>
+            <p class="order__product-chars">{{ product.weight }}г. {{ product.amount }} шт.</p>
+            <p class="order__product-composition">{{ product.composition }}</p>
+            <a href="{% url 'app_cart:cart_remove_product' product.id %}">
+              <img src="{% static 'svg/app_cart/bin.svg' %}" alt="bin">
+            </a>
+            <a href="{% url 'app_cart:cart_remove_unit_of_product' product.id %}">
+              <img src="{% static 'svg/app_cart/minus-icon.svg' %}" alt="minus">
+            </a>
+            <p class="order__big-text amount-counter">{{ item.quantity }}</p>
+            <a href="{% url 'app_cart:cart_add_product' product.id %}">
+              <img src="{% static 'svg/app_cart/plus-icon.svg' %}" alt="plus">
+            </a>
+          </div>
+        {% endwith %}
+      {% empty %}
+        <p class="order__big-text">Корзина пуста</p>
+      {% endfor %}
+    </div>
+    <p class="order__big-text">Итого:</p>
+    <p class="order__big-text">{{ cart.get_total_price }}</p>
+  </div>
 {% endblock %}
