@@ -1,4 +1,6 @@
 {% load static %}
+{% load cart_tags %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -40,6 +42,12 @@
         </li>
         <li class="nav-bar__icon-link-item">
           <a href="{% url 'app_cart:cart_view' %}"><img src="{% static "svg/cart-icon.svg" %}" alt="cart-icon"></a>
+          {% cart_length request as cart_length %}
+          {% if cart_length %}
+            <div class="nav-bar__cart-counter">
+              <p class="nav-bar__cart-counter-text">{{ cart_length }}</p>
+            </div>
+          {% endif %}
         </li>
       </ul>
     </nav>
