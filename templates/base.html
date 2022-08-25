@@ -38,16 +38,18 @@
       <div class="nav-bar__black-delimiter"></div>
       <ul class="nav-bar__icon-link-list">
         <li class="nav-bar__icon-link-item">
-          <a href="#"><img src="{% static "svg/profile-icon.svg" %}" alt="profile-icon"></a>
+          <a href="#"><img src="{% static "svg/profile-icon.svg" %}" alt="profile-icon" class="test"></a>
         </li>
-        <li class="nav-bar__icon-link-item">
-          <a href="{% url 'app_cart:cart_view' %}"><img src="{% static "svg/cart-icon.svg" %}" alt="cart-icon"></a>
+        <li class="nav-bar__icon-link-item nav-bar__cart">
+          <a href="{% url 'app_cart:cart_view' %}"><img src="{% static "svg/cart-icon.svg" %}" alt="cart-icon" class="nav-bar__cart-icon"></a>
           {% cart_length request as cart_length %}
+          <a href="{% url 'app_cart:cart_view' %}" class="nav-bar__cart-counter-link">
           {% if cart_length %}
             <div class="nav-bar__cart-counter">
               <p class="nav-bar__cart-counter-text">{{ cart_length }}</p>
             </div>
           {% endif %}
+          </a>
         </li>
       </ul>
     </nav>

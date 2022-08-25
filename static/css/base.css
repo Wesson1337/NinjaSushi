@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Jost:wght@400;600&display=swap');
 
+a {
+  text-decoration: none;
+}
+
 body {
   margin: 8px 0 0;
   background: #D9D9D9 url("/static/img/background.png") top;
@@ -53,7 +57,6 @@ body {
 
 .nav-bar__text-link {
   transition: 0.5s;
-  text-decoration: none;
   color: rgba(0, 0, 0, 0.84);
 }
 
@@ -81,8 +84,53 @@ body {
   list-style-type: none;
 }
 
+
 .nav-bar__icon-link-item:hover {
-  filter: invert(28%) sepia(0%) saturate(1785%) hue-rotate(163deg) brightness(107%) contrast(81%);
+  filter: invert(28%);
+}
+
+.nav-bar__cart {
+  display: flex;
+}
+
+.nav-bar__cart:hover {
+  filter: none;
+}
+
+.nav-bar__cart-icon {
+  transition: 0.5s;
+}
+
+.nav-bar__cart-icon:hover {
+  filter: invert(28%);
+}
+
+.nav-bar__cart-counter {
+  display: flex;
+  position: relative;
+  left: -11px;
+  top: -9px;
+  z-index: 999;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  background: #FEB8B8;
+  border-radius: 50%;
+}
+
+.nav-bar__cart-counter-text {
+  position: relative;
+  top: 1px;
+  font-family: Jost, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  color: white;
+}
+
+.nav-bar__cart-counter-link {
+  width: 0;
 }
 
 .footer {
@@ -138,7 +186,6 @@ body {
   font-size: 16px;
   line-height: 21px;
   color: #FFFFFF;
-  text-decoration: none;
 }
 
 .footer__text-link:hover {
@@ -159,7 +206,6 @@ body {
   font-size: 24px;
   line-height: 31px;
   color: #FFFFFF;
-  text-decoration: none;
 }
 
 .footer__contact-phone-link:hover {
@@ -184,7 +230,6 @@ body {
 
 .footer__policy-link {
   transition: 0.5s;
-  text-decoration: none;
   font-family: 'Jost', sans-serif;
   font-style: normal;
   font-weight: 400;
