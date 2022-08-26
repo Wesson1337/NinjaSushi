@@ -1,4 +1,22 @@
-@import url('https://fonts.googleapis.com/css2?family=Jost:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600&display=swap');
+
+@font-face {
+  font-family: "Geometria";
+  src: url("/static/fonts/geometria_extrabold.otf");
+  font-weight: 800;
+}
+
+@font-face {
+  font-family: "Geometria";
+  src: url("/static/fonts/geometria_bold.otf");
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: "Geometria";
+  src: url("/static/fonts/geometria_light.otf");
+  font-weight: 300;
+}
 
 a {
   text-decoration: none;

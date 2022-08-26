@@ -1,0 +1,125 @@
+.order {
+  margin: 50px 20px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 80px;
+  gap: 16px;
+  max-width: 1100px;
+  background: #FFFFFF;
+  box-shadow: 0 4px 66px rgba(191, 188, 188, 0.27);
+  border-radius: 50px;
+}
+
+.order__big-text {
+  margin: 0;
+  font-family: 'Geometria', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 32px;
+  color: rgba(0, 0, 0, 0.84);
+}
+
+.order__clear-cart-link {
+  font-family: 'Geometria', sans-serif;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 24px;
+  color: rgba(0, 0, 0, 0.82);
+}
+
+.order__cards {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  margin: 40px 0;
+  gap: 28px;
+}
+
+.order__product-card {
+  width: 100%;
+  padding: 20px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  background: #FFFFFF;
+  box-shadow: 0 4px 66px rgba(191, 188, 188, 0.27);
+  border-radius: 24px;
+}
+
+.order__product-image {
+  width: 280px;
+  height: 225px;
+  object-fit: contain;
+}
+
+.product-name {
+  margin-top: 42px;
+}
+
+.order__product-description {
+  width: 710px;
+  height: 225px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-content: flex-start;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.order__product-chars {
+  margin: 0;
+  font-family: 'Jost', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18px;
+  
+  color: rgba(133, 133, 133, 0.5);
+}
+
+.order__product-composition {
+  margin: 0;
+  max-width: 387px;
+  font-family: 'Jost', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 21px;
+  
+  color: #4A4A4A;
+}
+
+.order__quantity-control {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 28px;
+}
+
+.order__quantity-control-link {
+  display: flex;
+  margin-bottom: 3px;
+  height: 25px;
+}
+
+.order__minus-icon {
+  margin-top: 9px;
+  height: 5px;
+}
+
+.amount-counter {
+  font-size: 20px;
+  line-height: 25px;
+}
+
+.order__empty-cart-text {
+  margin: 60px 0;
+  max-width: 571px;
+  font-family: Jost, sans-serif;
+  font-weight: 500;
+  font-size: 31px;
+  color: #9b9b9b;
+}

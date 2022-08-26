@@ -13,24 +13,31 @@
       {% for item in cart %}
         {% with product=item.product %}
           <div class="order__product-card">
+            <div class="order__product-description">
             <img src="{{ product.image.url }}" alt="product-img" class="order__product-image">
-            <p class="order__big-text">{{ product.name }}</p>
-            <p class="order__product-chars">{{ product.weight }}г. {{ product.amount }} шт.</p>
-            <p class="order__product-composition">{{ product.composition }}</p>
-            <a href="{% url 'app_cart:cart_remove_product' product.id %}">
-              <img src="{% static 'svg/app_cart/bin.svg' %}" alt="bin">
-            </a>
-            <a href="{% url 'app_cart:cart_remove_unit_of_product' product.id %}">
-              <img src="{% static 'svg/app_cart/minus-icon.svg' %}" alt="minus">
-            </a>
-            <p class="order__big-text amount-counter">{{ item.quantity }}</p>
-            <a href="{% url 'app_cart:cart_add_product' product.id %}">
-              <img src="{% static 'svg/app_cart/plus-icon.svg' %}" alt="plus">
-            </a>
+              <p class="order__big-text product-name">{{ product.name }}</p>
+              <p class="order__product-chars">{{ product.weight }}г. {{ product.amount }} шт.</p>
+              <p class="order__product-composition">{{ product.composition }}</p>
+            </div>
+            <p class="order__big-text">{{ product.price }}₽</p>
+            <div class="order-product-control">
+              <a href="{% url 'app_cart:cart_remove_product' product.id %}">
+                <img src="{% static 'svg/app_cart/bin.svg' %}" alt="bin">
+              </a>
+              <div class="order__quantity-control">
+                <a href="{% url 'app_cart:cart_remove_unit_of_product' product.id %}" class="order__quantity-control-link">
+                  <img src="{% static 'svg/app_cart/minus-icon.svg' %}" alt="minus" class="order__minus-icon">
+                </a>
+                <p class="order__big-text amount-counter">{{ item.quantity }}</p>
+                <a href="{% url 'app_cart:cart_add_product' product.id %}" class="order__quantity-control-link">
+                  <img src="{% static 'svg/app_cart/plus-icon.svg' %}" alt="plus">
+                </a>
+              </div>
+            </div>
           </div>
         {% endwith %}
       {% empty %}
-        <p class="order__big-text">Корзина пуста</p>
+        <p class="order__empty-cart-text">Корзина пуста, закажите что-нибудь</p>
       {% endfor %}
     </div>
     <p class="order__big-text">Итого:</p>
