@@ -43,4 +43,13 @@
     <p class="order__big-text">Итого:</p>
     <p class="order__big-text">{{ cart.get_total_price }}₽</p>
   </div>
+  {% if cart %}
+    <div class="address">
+      <p class="address__big-text">Адрес</p>
+      <form method="post">
+        {% csrf_token %}
+
+      </form>
+    </div>
+  {% endif %}
 {% endblock %}

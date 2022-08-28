@@ -5,5 +5,5 @@ register = template.Library()
 
 
 @register.simple_tag
-def cart_length(request):
+def cart_length(request) -> int:
     return len(Cart(request))
