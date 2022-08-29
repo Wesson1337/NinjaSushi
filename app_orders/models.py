@@ -22,7 +22,7 @@ class Order(models.Model):
                                       verbose_name='способ оплаты')
     created = models.DateTimeField(auto_now_add=True, verbose_name='время создания')
     updated = models.DateTimeField(auto_now=True, verbose_name='время изменения')
-    paid = models.BooleanField(default=False, verbose_name='статус оплаты')
+    paid = models.BooleanField(default=False, verbose_name='заказ оплачен')
 
     class Meta:
         verbose_name = 'Заказ'
@@ -37,6 +37,8 @@ class Order(models.Model):
 
 
 class OrderItem(models.Model):
+    """Model for products in order"""
+
     order = models.ForeignKey(Order, related_name='items', on_delete=models.CASCADE, verbose_name='заказ')
     product = models.ForeignKey(Product, related_name='order_items', on_delete=models.CASCADE, verbose_name='товар')
     price = models.PositiveIntegerField(verbose_name='цена')

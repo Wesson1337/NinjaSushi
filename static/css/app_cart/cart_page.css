@@ -41,7 +41,7 @@
   padding: 20px 30px;
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-end;
   flex-wrap: wrap;
   background: #FFFFFF;
   box-shadow: 0 4px 66px rgba(191, 188, 188, 0.27);

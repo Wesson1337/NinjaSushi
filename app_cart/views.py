@@ -1,7 +1,11 @@
 from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render, get_object_or_404
+
+from app_orders.models import OrderItem
 from app_shop.models import Product
 from app_cart.cart import Cart
+from django.views import View
+from app_orders.forms import OrderForm
 
 
 def cart_add_product(request, product_id: int) -> HttpResponseRedirect:
@@ -39,6 +43,25 @@ def cart_clear(request) -> HttpResponseRedirect:
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
 
-def cart_view(request) -> HttpResponse:
-    cart = Cart(request)
-    return render(request, 'app_cart/cart_page.html', context={'cart': cart})
+class CartView(View):
+
+    def get(self, request) -> HttpResponse:
+        cart = Cart(request)
+        form = OrderForm
+        return render(request, 'app_cart/cart_page.html', context={'cart': cart, 'form': form})
+
+    def post(self, request):
+        cart = Cart(request)
+        form = OrderForm(request.POST)
+        if form.is_valid():
+            order = form.save()
+            for item in cart:
+                OrderItem.objects.create(
+                    order=order,
+                    product=item['product'],
+                    price=item['price'],
+                    quantity=item['quantity']
+                )
+            cart.clear()
+            return HttpResponseRedirect('/')
+
