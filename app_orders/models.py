@@ -1,20 +1,16 @@
 from django.db import models
 from app_shop.models import Product
 
-
-class PaymentMethod(models.Model):
-    name = models.CharField(max_length=100, verbose_name='название')
-
-    class Meta:
-        verbose_name = 'Способ оплаты'
-        verbose_name_plural = 'Способы оплаты'
-
-    def __str__(self):
-        return f'{self.name}'
+PAYMENT_METHODS = [
+    ('card_o', 'Оплата картой онлайн'),
+    ('card_c', 'Оплата картой курьеру'),
+    ('cash', 'Оплата наличными курьеру')
+]
 
 
 class Order(models.Model):
     name = models.CharField(max_length=50, verbose_name='имя')
+    email = models.EmailField(verbose_name='электронная почта')
     phone_number = models.CharField(max_length=20, verbose_name='номер телефона')
     city = models.CharField(max_length=50, verbose_name='город')
     street = models.CharField(max_length=50, verbose_name='улица')
@@ -22,7 +18,8 @@ class Order(models.Model):
     flat = models.PositiveIntegerField(verbose_name='квартира')
     floor = models.PositiveIntegerField(blank=True, verbose_name='этаж')
     intercom = models.CharField(max_length=20, blank=True, verbose_name='домофон')
-    payment_method = models.ForeignKey(PaymentMethod, on_delete=models.CASCADE, verbose_name='способ оплаты')
+    payment_method = models.CharField(max_length=6, choices=PAYMENT_METHODS, default='card_o',
+                                      verbose_name='способ оплаты')
     created = models.DateTimeField(auto_now_add=True, verbose_name='время создания')
     updated = models.DateTimeField(auto_now=True, verbose_name='время изменения')
     paid = models.BooleanField(default=False, verbose_name='статус оплаты')
