@@ -20,8 +20,8 @@
               <p class="order__product-composition">{{ product.composition }}</p>
             </div>
             <p class="order__big-text">{{ product.price }}₽</p>
-            <div class="order-product-control">
-              <a href="{% url 'app_cart:cart_remove_product' product.id %}">
+            <div class="order__product-control">
+              <a href="{% url 'app_cart:cart_remove_product' product.id %}" class="order__bin-link">
                 <img src="{% static 'svg/app_cart/bin.svg' %}" alt="bin">
               </a>
               <div class="order__quantity-control">
