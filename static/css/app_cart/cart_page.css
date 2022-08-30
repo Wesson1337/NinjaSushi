@@ -137,6 +137,15 @@
   color: #9b9b9b;
 }
 
+.address {
+  box-sizing: border-box;
+  max-width: 1260px;
+  padding: 70px 92px;
+  background: #FFFFFF;
+  box-shadow: 0 4px 66px rgba(191, 188, 188, 0.27);
+  border-radius: 50px;
+}
+
 @media (max-width: 1180px) {
   .order__product-control {
     height: 70px;

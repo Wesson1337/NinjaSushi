@@ -44,13 +44,13 @@ def cart_clear(request) -> HttpResponseRedirect:
 
 
 class CartView(View):
-
+    """View for rendering and post-processing cart_page.html"""
     def get(self, request) -> HttpResponse:
         cart = Cart(request)
         form = OrderForm
         return render(request, 'app_cart/cart_page.html', context={'cart': cart, 'form': form})
 
-    def post(self, request):
+    def post(self, request) -> HttpResponseRedirect:
         cart = Cart(request)
         form = OrderForm(request.POST)
         if form.is_valid():
