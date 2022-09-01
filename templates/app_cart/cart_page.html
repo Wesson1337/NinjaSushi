@@ -46,7 +46,7 @@
   {% if cart %}
     <div class="address">
       <p class="address__big-text">Адрес</p>
-      <form method="post">
+      <form method="post" class="address__form">
         {% csrf_token %}
         <p>
           <label for="id_name">Имя:</label>
