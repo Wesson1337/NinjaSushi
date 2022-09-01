@@ -48,53 +48,53 @@
       <p class="address__big-text">Адрес</p>
       <form method="post" class="address__form">
         {% csrf_token %}
-        <p>
-          <label for="id_name">Имя:</label>
-          <input type="text" name="name" maxlength="50" required id="id_name">
-        </p>
-        <p>
-          <label for="id_email">Электронная почта:</label>
-          <input type="email" name="email" maxlength="254" required id="id_email">
-        </p>
-        <p>
-          <label for="id_phone_number">Номер телефона:</label>
-          <input type="text" name="phone_number" maxlength="20" required id="id_phone_number">
-        </p>
-        <p>
-          <label for="id_city">Город:</label>
-          <input type="text" name="city" maxlength="50" required id="id_city">
-        </p>
-        <p>
-          <label for="id_street">Улица:</label>
-          <input type="text" name="street" maxlength="50" required id="id_street">
-        </p>
-        <p>
-          <label for="id_house">Дом:</label>
-          <input type="number" name="house" min="0" required id="id_house">
-        </p>
-        <p>
-          <label for="id_flat">Квартира:</label>
-          <input type="number" name="flat" min="0" required id="id_flat">
-        </p>
-        <p>
-          <label for="id_floor">Этаж:</label>
-          <input type="number" name="floor" min="0" id="id_floor">
-        </p>
-        <p>
-          <label for="id_intercom">Домофон:</label>
-          <input type="text" name="intercom" maxlength="20" id="id_intercom">
-        </p>
-        <p>
-          <label for="id_payment_method">Способ оплаты:</label>
+        <div class="address__input-block">
+          <label for="id_name" class="address__label">Ваше имя</label>
+          <input type="text" name="name" maxlength="50" required id="id_name" class="address__text-input text-input-bigger">
+        </div>
+        <div class="address__input-block">
+          <label for="id_email" class="address__label">Электронная почта</label>
+          <input type="email" name="email" maxlength="254" required id="id_email" class="address__text-input">
+        </div>
+        <div class="address__input-block">
+          <label for="id_phone_number" class="address__label">Номер телефона</label>
+          <input type="text" name="phone_number" maxlength="20" required id="id_phone_number" class="address__text-input">
+        </div>
+        <div class="address__input-block">
+          <label for="id_city" class="address__label">Город</label>
+          <input type="text" name="city" maxlength="50" required id="id_city" class="address__text-input">
+        </div>
+        <div class="address__input-block">
+          <label for="id_street" class="address__label">Улица</label>
+          <input type="text" name="street" maxlength="50" required id="id_street" class="address__text-input">
+        </div>
+        <div class="address__input-block">
+          <label for="id_house" class="address__label">Дом</label>
+          <input type="number" name="house" min="0" required id="id_house" class="address__text-input">
+        </div>
+        <div class="address__input-block">
+          <label for="id_flat" class="address__label">Квартира</label>
+          <input type="number" name="flat" min="0" required id="id_flat" class="address__text-input">
+        </div>
+        <div class="address__input-block">
+          <label for="id_floor" class="address__label">Этаж</label>
+          <input type="number" name="floor" min="0" id="id_floor" class="address__text-input">
+        </div>
+        <div class="address__input-block">
+          <label for="id_intercom" class="address__label">Домофон</label>
+          <input type="text" name="intercom" maxlength="20" id="id_intercom" class="address__text-input">
+        </div>
+        <div class="address__input-block">
+          <label for="id_payment_method" class="address__label">Способ оплаты</label>
           <select name="payment_method" id="id_payment_method">
             <option value="card_o" selected>Оплата картой онлайн</option>
             <option value="card_c">Оплата картой курьеру</option>
             <option value="cash">Оплата наличными курьеру</option>
           </select>
-        </p>
-        <p>
+        </div>
+        <div class="address__input-block">
           <input type="submit" value="Заказать">
-        </p>
+        </div>
       </form>
     </div>
   {% endif %}

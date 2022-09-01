@@ -146,6 +146,52 @@
   border-radius: 50px;
 }
 
+.address__big-text {
+  font-family: 'Geometria', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 90%;
+  color: rgba(0, 0, 0, 0.84);
+}
+
+.address__form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.address__input-block {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.address__label {
+  font-family: 'Geometria', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 90%;
+  
+  color: rgba(0, 0, 0, 0.84);
+}
+
+.address__text-input {
+  width: 500px;
+  height: 30px;
+  border: none;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.11);
+  transition: 0.25s ease-out;
+}
+
+.address__text-input:focus {
+  outline: 0;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.11);
+  border-radius: 1px;
+  background-color: rgba(0, 0, 0, 0.03);
+}
+
 @media (max-width: 1180px) {
   .order__product-control {
     height: 70px;
