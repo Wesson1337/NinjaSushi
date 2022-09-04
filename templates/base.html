@@ -7,8 +7,7 @@
   <meta charset="UTF-8">
   <title>{% block title %}{% endblock %}</title>
   <link rel="stylesheet" href="{% static 'css/base.css' %}">
-  <link rel="stylesheet" href="{% static 'css/app_shop/main_page.css' %}">
-  <link rel="stylesheet" href="{% static 'css/app_cart/cart_page.css' %}">
+  <link rel="stylesheet" href="{% block css-link %}{% endblock %}">
 </head>
 <body>
   <header class="header">

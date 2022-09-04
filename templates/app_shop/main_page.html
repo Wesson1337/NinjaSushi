@@ -2,7 +2,14 @@
 {% load main_page_tags %}
 {% load static %}
 
-{% block title %}Бесплатная доставка суши, роллов | Ninja Sushi - Меню{% endblock %}
+{% block title %}
+  Бесплатная доставка суши, роллов | Ninja Sushi - Меню
+{% endblock %}
+
+{% block css-link %}
+  {% static 'css/app_shop/main_page.css' %}
+{% endblock %}
+
 {% block content %}
   <div class="description">
     <h1 class="description__info">ДОСТАВКА СУШИ И РОЛЛОВ</h1>
