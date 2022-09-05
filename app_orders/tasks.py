@@ -5,17 +5,18 @@ from django.conf import settings
 
 
 @shared_task
-def order_created(order_id):
+def order_created(order_id: int) -> int:
     """Task to send email on successful ordering"""
 
     order = Order.objects.get(id=order_id)
     order_list = [f'{index + 1}. Название: {item.product.name}, Цена: {item.product.price}₽, '
-                  f'Количество: {item.quantity} шт. Общая цена: {item.product.price * item.quantity}₽'
+                  f'Количество: {item.quantity} шт. Общая цена: {item.product.price * item.quantity}₽.'
                   for index, item in enumerate(order.items.all())]
     order_list_text = '\n'.join(order_list)
     subject = f'Успешный заказ №{order_id}'
     message = f'''Дорогой {order.name}, ваш заказ №{order_id} был успешно создан. В ближайшее время ваш заказ ''' \
-              f'''доставит курьер. Состав заказа: 
+              f'''доставит курьер. 
+Состав заказа: 
 {order_list_text}
 
 Итоговая стоимость заказа: {order.get_total_cost()}₽.'''
