@@ -294,3 +294,69 @@
   line-height: 26px;
   color: #000000;
 }
+
+.bottom-info__newsletter-form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 15px;
+}
+
+.bottom-info__email-input {
+  width: 310px;
+  height: 58px;
+  padding-left: 25px;
+  transition: 0.25s ease-out;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 37px;
+  
+  font-family: 'Jost', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 15px;
+
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.bottom-info__email-input:focus {
+  outline: 0;
+  border: 1px solid rgba(0, 0, 0, 0.6);
+  color: rgba(0, 0, 0, 0.8);
+}
+
+.bottom-info__email-input::placeholder {
+  margin-left: 25px;
+}
+
+.bottom-info__submit-button {
+  cursor: pointer;
+  border: none;
+  width: 147px;
+  height: 62px;
+  background: #FF9999;
+  border-radius: 37px;
+  
+  font-family: 'Jost', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 15px;
+  
+  color: #FFFFFF;
+}
+
+.bottom-info__accept-checkbox {
+  margin-left: 17px;
+  width: 15px;
+  height: 15px;
+}
+
+.bottom-info__accept-text {
+  max-width: 460px;
+  font-family: 'Jost', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 21px;
+  
+  color: #000000;
+}

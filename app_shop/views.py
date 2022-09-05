@@ -17,8 +17,7 @@ class MainPageView(View):
 
     def post(self, request, *args, **kwargs) -> HttpResponseRedirect:
         form = NewsletterEmailForm(request.POST)
-        email = form.cleaned_data['email']
-        if form.is_valid() and not NewsletterEmail.objects.filter(email=email):
+        if form.is_valid() and not NewsletterEmail.objects.filter(email=form.cleaned_data['email']):
             form.save()
         return HttpResponseRedirect('/')
 

@@ -65,12 +65,12 @@
     </div>
     <div class="bottom-info__block">
       <p class="bottom-info__block-header">Получай скидки через рассылку</p>
-      <form method="post" class="bottom-info__email-newsletter">
+      <form method="post" class="bottom-info__newsletter-form">
         {% csrf_token %}
         <label for="id_email"></label>
-        <input type="email" name="email" maxlength="254" required id="id_email">
-        <input type="submit" value="Подписаться">
-        <input type="checkbox" id="accept-checkbox" required>
+        <input type="email" name="email" maxlength="254" required id="id_email" placeholder="Ваша эл.почта" class="bottom-info__email-input">
+        <input type="submit" value="Подписаться" class="bottom-info__submit-button">
+        <input type="checkbox" id="accept-checkbox" required class="bottom-info__accept-checkbox">
         <label for="accept-checkbox" class="bottom-info__accept-text">
           Я хочу получать информацию о проводимых акциях и специальных предложениях
         </label>
