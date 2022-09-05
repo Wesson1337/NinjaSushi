@@ -1,7 +1,7 @@
 from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render, get_object_or_404
 
-from app_orders.tasks import order_created
+from app_orders.tasks import order_created_task
 from app_orders.models import OrderItem
 from app_shop.models import Product
 from app_cart.cart import Cart
@@ -48,8 +48,7 @@ class CartView(View):
     """View for rendering and post-processing cart_page.html"""
     def get(self, request) -> HttpResponse:
         cart = Cart(request)
-        form = OrderForm
-        return render(request, 'app_cart/cart_page.html', context={'cart': cart, 'form': form})
+        return render(request, 'app_cart/cart_page.html', context={'cart': cart})
 
     def post(self, request) -> HttpResponseRedirect:
         cart = Cart(request)
@@ -64,6 +63,6 @@ class CartView(View):
                     quantity=item['quantity']
                 )
             cart.clear()
-            order_created.delay(order.id)
-            return HttpResponseRedirect('/')
+            order_created_task.delay(order.id)
+        return HttpResponseRedirect('/')
 
