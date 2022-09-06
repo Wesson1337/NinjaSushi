@@ -5,7 +5,7 @@ from django.conf import settings
 
 
 @shared_task
-def order_created_task(order_id: int) -> int:
+def order_created_email_task(order_id: int) -> int:
     """Task to send email on successful ordering"""
 
     order = Order.objects.get(id=order_id)

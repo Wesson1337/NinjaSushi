@@ -3,6 +3,7 @@ from django.shortcuts import render
 from django.views import View
 from app_newsletter.forms import NewsletterEmailForm
 from app_newsletter.models import NewsletterEmail
+from app_newsletter.tasks import newsletter_subscription_email_task
 from app_shop.models import Product, Category
 
 
@@ -17,8 +18,11 @@ class MainPageView(View):
 
     def post(self, request, *args, **kwargs) -> HttpResponseRedirect:
         form = NewsletterEmailForm(request.POST)
-        if form.is_valid() and not NewsletterEmail.objects.filter(email=form.cleaned_data['email']):
-            form.save()
+        if form.is_valid():
+            email = form.cleaned_data['email']
+            if not NewsletterEmail.objects.filter(email=email):
+                form.save()
+                newsletter_subscription_email_task(email)
         return HttpResponseRedirect('/')
 
 
