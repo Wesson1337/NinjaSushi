@@ -44,12 +44,12 @@
 }
 
 .description__order-button-link {
-  transition: 0.5s ease-out;
+  transition: 0.25s ease-out;
   text-decoration: none;
 }
 
 .description__order-button-link:hover {
-  filter: invert(8%);
+  filter: brightness(1.05) drop-shadow(0 0 10px #FFFFFF);
 }
 
 .description__button-text {
@@ -329,6 +329,7 @@
 }
 
 .bottom-info__submit-button {
+  transition: 0.25s ease-out;
   cursor: pointer;
   border: none;
   width: 147px;
@@ -342,6 +343,10 @@
   font-size: 15px;
   
   color: #FFFFFF;
+}
+
+.bottom-info__submit-button:hover {
+  filter: brightness(1.05) drop-shadow(0 0 3px #FF9999);
 }
 
 .bottom-info__accept-checkbox {
