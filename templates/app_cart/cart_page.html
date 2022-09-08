@@ -104,18 +104,6 @@
         </div>
       </form>
       {% endif %}
-      <div id="address__order-popup" class="address__order-popup">
-        <div id="address__popup-window" class="address__popup-window">
-          <img src="{% static 'svg/app_cart/done-icon.svg' %}" alt="done">
-          <p class="address__big-text big-text-pop-up">Приятного аппетита!</p>
-          <p class="address__smaller-text">Ваш заказ успешно оформлен.</p>
-          <p class="address__smaller-text fw500">Наш менеджер свяжется с вами в ближайшее время</p>
-          <p class="address__smaller-text fw500">Информация о заказе придет на указанный вами email.</p>
-          <button onclick="location.href='{% url 'app_shop:main_page' %}'" class="address__main-page-button address__smaller-text fw700">
-            Вернуться на главную
-          </button>
-        </div>
       </div>
-    </div>
-  {% block activate-pop-up-script %}{% endblock %}
+  {% block order-pop-up %}{% endblock %}
 {% endblock %}

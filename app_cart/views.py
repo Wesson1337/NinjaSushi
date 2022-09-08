@@ -2,7 +2,7 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render, get_object_or_404
 
 from app_orders.tasks import order_created_email_task
-from app_orders.models import OrderItem
+from app_orders.models import OrderItem, Order
 from app_shop.models import Product
 from app_cart.cart import Cart
 from django.views import View
@@ -64,4 +64,5 @@ class CartView(View):
                 )
             cart.clear()
             order_created_email_task.delay(order.id)
+            return render(request, 'app_cart/cart_page_successful_order.html', context={'order_number': order.id})
         return render(request, 'app_cart/cart_page_successful_order.html')

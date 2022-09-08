@@ -1,6 +1,19 @@
 {% extends 'app_cart/cart_page.html' %}
 {% load static %}
 
-{% block activate-pop-up-script %}
-  <script src="{% static 'js/app_cart/successful-order-popup.js' %}"></script>
+{% block order-pop-up %}
+  <div id="order-popup" class="order-popup">
+    <div id="order-popup__window" class="order-popup__window">
+      <img src="{% static 'svg/app_cart/done-icon.svg' %}" alt="done">
+      <p class="address__big-text big-text-pop-up">Приятного аппетита!</p>
+      <p class="order-popup__smaller-text">Ваш заказ успешно оформлен.</p>
+      <p class="order-popup__smaller-text fw500">Наш менеджер свяжется с вами в ближайшее время</p>
+      <p class="order-popup__smaller-text fw500">Номер заказа #{{ order_number }}.</p>
+      <button onclick="location.href='{% url 'app_shop:main_page' %}'" class="order-popup__main-page-button order-popup__smaller-text fw700">
+        Вернуться на главную
+      </button>
+    </div>
+  </div>
+  <script src="{% static 'js/pop-ups.js' %}"></script>
+  <script>window.onload = setTimeout(openOrderPopup, 1000);</script>
 {% endblock %}
