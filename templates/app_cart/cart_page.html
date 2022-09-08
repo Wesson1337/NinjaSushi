@@ -45,7 +45,7 @@
       {% endfor %}
     </div>
     <p class="order__big-text">Итого:</p>
-    <p class="order__big-text">{{ cart.get_total_price }}₽</p>
+    <p class="order__big-text">{% firstof cart.get_total_price '0' %}₽</p>
   </div>
   {% if cart %}
     <div class="address">
