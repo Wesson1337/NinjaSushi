@@ -265,7 +265,7 @@
   color: #FFB7B7;
 }
 
-#address__order-popup {
+.address__order-popup {
   position: fixed;
   top: 0;
   left: 0;
@@ -277,6 +277,13 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  
+  transition: 0.5s ease-out;
+  visibility: hidden;
+}
+
+.order-popup-active {
+  visibility: visible;
 }
 
 .address__popup-window {
@@ -286,6 +293,7 @@
   align-items: center;
   gap: 13px;
   
+  
   box-sizing: border-box;
   width: 550px;
   height: 550px;
@@ -293,6 +301,15 @@
   background: #FFFFFF;
   box-shadow: 0 4px 66px rgba(191, 188, 188, 0.27);
   border-radius: 50px;
+  
+  transition: 0.5s ease-out;
+  transform: translate(0, -100%) scale(0.2);
+  visibility: hidden;
+}
+
+.popup-window-active {
+  transform: translate(0, -20%) scale(1);
+  visibility: visible;
 }
 
 .address__smaller-text {

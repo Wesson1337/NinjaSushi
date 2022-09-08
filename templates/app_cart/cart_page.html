@@ -103,8 +103,9 @@
           <input type="submit" value="Заказать" class="address__order-button">
         </div>
       </form>
-      <div id="address__order-popup">
-        <div class="address__popup-window">
+      {% endif %}
+      <div id="address__order-popup" class="address__order-popup">
+        <div id="address__popup-window" class="address__popup-window">
           <img src="{% static 'svg/app_cart/done-icon.svg' %}" alt="done">
           <p class="address__big-text big-text-pop-up">Приятного аппетита!</p>
           <p class="address__smaller-text">Ваш заказ успешно оформлен.</p>
@@ -116,5 +117,5 @@
         </div>
       </div>
     </div>
-  {% endif %}
+  {% block activate-pop-up-script %}{% endblock %}
 {% endblock %}

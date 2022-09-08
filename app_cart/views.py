@@ -50,10 +50,10 @@ class CartView(View):
         cart = Cart(request)
         return render(request, 'app_cart/cart_page.html', context={'cart': cart})
 
-    def post(self, request) -> HttpResponseRedirect:
+    def post(self, request) -> HttpResponse:
         cart = Cart(request)
         form = OrderForm(request.POST)
-        if form.is_valid():
+        if form.is_valid() and cart:
             order = form.save()
             for item in cart:
                 OrderItem.objects.create(
@@ -64,5 +64,4 @@ class CartView(View):
                 )
             cart.clear()
             order_created_email_task.delay(order.id)
-        return HttpResponseRedirect('/')
-
+        return render(request, 'app_cart/cart_page_successful_order.html')
