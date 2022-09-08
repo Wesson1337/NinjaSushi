@@ -2,7 +2,6 @@ from django.db import models
 from app_shop.models import Product
 
 PAYMENT_METHODS = [
-    ('card_o', 'Оплата картой онлайн'),
     ('card_c', 'Оплата картой курьеру'),
     ('cash', 'Оплата наличными курьеру')
 ]

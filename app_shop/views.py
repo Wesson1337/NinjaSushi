@@ -22,7 +22,7 @@ class MainPageView(View):
             email = form.cleaned_data['email']
             if not NewsletterEmail.objects.filter(email=email):
                 form.save()
-                newsletter_subscription_email_task(email)
+                newsletter_subscription_email_task.delay(email)
         return HttpResponseRedirect('/')
 
 
