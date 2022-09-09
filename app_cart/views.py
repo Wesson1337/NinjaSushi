@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render, get_object_or_404
 
@@ -52,9 +53,11 @@ class CartView(View):
 
     def post(self, request) -> HttpResponse:
         cart = Cart(request)
-        form = OrderForm(request.POST)
-        if form.is_valid() and cart:
-            order = form.save()
+        form_without_user = OrderForm(request.POST)
+        if form_without_user.is_valid() and cart:
+            order = form_without_user.save(commit=False)
+            order.user = request.user
+            order.save()
             for item in cart:
                 OrderItem.objects.create(
                     order=order,

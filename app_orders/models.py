@@ -1,5 +1,6 @@
 from django.db import models
 from app_shop.models import Product
+from django.contrib.auth.models import User
 
 PAYMENT_METHODS = [
     ('card_c', 'Оплата картой курьеру'),
@@ -8,6 +9,7 @@ PAYMENT_METHODS = [
 
 
 class Order(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='Пользователь')
     name = models.CharField(max_length=50, verbose_name='имя')
     email = models.EmailField(verbose_name='электронная почта')
     phone_number = models.CharField(max_length=20, verbose_name='номер телефона')
@@ -17,7 +19,7 @@ class Order(models.Model):
     flat = models.PositiveIntegerField(verbose_name='квартира')
     floor = models.PositiveIntegerField(blank=True, verbose_name='этаж')
     intercom = models.CharField(max_length=20, blank=True, verbose_name='домофон')
-    payment_method = models.CharField(max_length=6, choices=PAYMENT_METHODS, default='card_o',
+    payment_method = models.CharField(max_length=6, choices=PAYMENT_METHODS, default='card_c',
                                       verbose_name='способ оплаты')
     created = models.DateTimeField(auto_now_add=True, verbose_name='время создания')
     updated = models.DateTimeField(auto_now=True, verbose_name='время изменения')
