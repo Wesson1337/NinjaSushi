@@ -53,9 +53,9 @@ class CartView(View):
 
     def post(self, request) -> HttpResponse:
         cart = Cart(request)
-        form_without_user = OrderForm(request.POST)
-        if form_without_user.is_valid() and cart:
-            order = form_without_user.save(commit=False)
+        form = OrderForm(request.POST)
+        if form.is_valid() and cart:
+            order = form.save(commit=False)
             order.user = request.user
             order.save()
             for item in cart:
