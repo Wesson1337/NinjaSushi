@@ -14,10 +14,10 @@ class Category(models.Model):
 
 class Product(models.Model):
     name = models.CharField(max_length=255, verbose_name='название')
-    amount = models.PositiveIntegerField(verbose_name='количество')
+    amount = models.PositiveIntegerField(verbose_name='количество (шт.)')
     composition = models.TextField(default=None, blank=True, verbose_name='состав')
-    weight = models.PositiveIntegerField(verbose_name='вес')
-    price = models.PositiveIntegerField(verbose_name='цена')
+    weight = models.PositiveIntegerField(verbose_name='вес (гр.)')
+    price = models.PositiveIntegerField(verbose_name='цена (₽)')
     image = models.ImageField(upload_to='img/app_shop/product_images', verbose_name='фото')
     category = models.ForeignKey(Category, on_delete=models.CASCADE, verbose_name='категория')
 

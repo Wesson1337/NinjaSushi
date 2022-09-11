@@ -5,7 +5,7 @@ from app_accounts.models import CustomUser
 
 @admin.register(CustomUser)
 class CustomUserAdmin(UserAdmin):
-    list_display = ("username", "email", "phone_number", "is_staff")
+    list_display = ("username", "email", "phone_number", "is_staff", "date_joined")
 
     fieldsets = (
         (None, {

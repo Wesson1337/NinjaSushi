@@ -96,11 +96,12 @@
   max-width: 1320px;
   display: flex;
   flex-wrap: wrap;
-  justify-items: center;
+  flex-direction: column;
 }
 
 
 .cards__category {
+  width: 100%;
   margin: 50px 0 21px;
   font-family: 'Geometria', sans-serif;
   font-style: normal;
