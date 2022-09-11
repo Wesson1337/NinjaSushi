@@ -144,6 +144,8 @@ MEDIA_ROOT = 'media'
 
 CART_SESSION_ID = 'cart'
 
+AUTH_USER_MODEL = 'app_accounts.CustomUser'
+
 EMAIL_HOST = 'smtp.yandex.ru'
 EMAIL_PORT = 587
 EMAIL_HOST_USER = "ninjasushi450@yandex.ru"

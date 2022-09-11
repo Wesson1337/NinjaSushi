@@ -1,6 +1,7 @@
 from django.db import models
+
+from app_accounts.models import CustomUser
 from app_shop.models import Product
-from django.contrib.auth.models import User
 
 PAYMENT_METHODS = [
     ('card_c', 'Оплата картой курьеру'),
@@ -9,7 +10,8 @@ PAYMENT_METHODS = [
 
 
 class Order(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='Пользователь')
+    user = models.ForeignKey(CustomUser, blank=True, null=True, on_delete=models.CASCADE,
+                             related_name='orders', verbose_name='Пользователь')
     name = models.CharField(max_length=50, verbose_name='имя')
     email = models.EmailField(verbose_name='электронная почта')
     phone_number = models.CharField(max_length=20, verbose_name='номер телефона')

@@ -13,3 +13,7 @@ function closeOrderPopup(){
     orderPopupWindow.classList.remove("order-popup__window-active");
     body.classList.remove("none-scroll-body")
 }
+
+function openLoginPopup(){
+
+}

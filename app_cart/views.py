@@ -1,9 +1,8 @@
-from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect, HttpResponse
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 
 from app_orders.tasks import order_created_email_task
-from app_orders.models import OrderItem, Order
+from app_orders.models import OrderItem
 from app_shop.models import Product
 from app_cart.cart import Cart
 from django.views import View
@@ -51,12 +50,13 @@ class CartView(View):
         cart = Cart(request)
         return render(request, 'app_cart/cart_page.html', context={'cart': cart})
 
-    def post(self, request) -> HttpResponse:
+    def post(self, request) -> HttpResponseRedirect:
         cart = Cart(request)
         form = OrderForm(request.POST)
         if form.is_valid() and cart:
             order = form.save(commit=False)
-            order.user = request.user
+            if request.user.is_authenticated:
+                order.user = request.user
             order.save()
             for item in cart:
                 OrderItem.objects.create(
@@ -68,4 +68,4 @@ class CartView(View):
             cart.clear()
             order_created_email_task.delay(order.id)
             return render(request, 'app_cart/cart_page_successful_order.html', context={'order_number': order.id})
-        return render(request, 'app_cart/cart_page_successful_order.html')
+        return redirect('app_cart:cart_view')

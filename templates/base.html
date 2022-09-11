@@ -37,7 +37,11 @@
       <div class="nav-bar__black-delimiter"></div>
       <ul class="nav-bar__icon-link-list">
         <li class="nav-bar__icon-link-item">
-          <a href="#"><img src="{% static "svg/profile-icon.svg" %}" alt="profile-icon" class="test"></a>
+          {% if request.user.is_authenticated %}
+            <img src="{% static "svg/profile-icon.svg" %}" alt="profile-icon" onclick="openLoginPopup()">
+          {% else %}
+            <a href="#"><img src="{% static "svg/profile-icon.svg" %}" alt="profile-icon"></a>
+          {% endif %}
         </li>
         <li class="nav-bar__icon-link-item nav-bar__cart">
           <a href="{% url 'app_cart:cart_view' %}"><img src="{% static "svg/cart-icon.svg" %}" alt="cart-icon" class="nav-bar__cart-icon"></a>
@@ -122,3 +126,4 @@
 </body>
 </html>
 <script src="{% static "js/smooth_scroll.js" %}"></script>
+<script src="{% static 'js/pop-ups.js' %}"></script>
