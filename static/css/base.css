@@ -118,6 +118,10 @@ body {
   filter: invert(28%);
 }
 
+.nav-bar__profile-icon {
+  cursor: pointer; 
+}
+
 .nav-bar__cart {
   display: flex;
 }

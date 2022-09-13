@@ -38,9 +38,9 @@
       <ul class="nav-bar__icon-link-list">
         <li class="nav-bar__icon-link-item">
           {% if request.user.is_authenticated %}
-            <img src="{% static "svg/profile-icon.svg" %}" alt="profile-icon" onclick="openLoginPopup()">
+            <a href="{% url 'app_accounts:personal_account' %}"><img src="{% static "svg/profile-icon.svg" %}" alt="profile-icon"></a>
           {% else %}
-            <a href="#"><img src="{% static "svg/profile-icon.svg" %}" alt="profile-icon"></a>
+            <img src="{% static "svg/profile-icon.svg" %}" alt="profile-icon" onclick="openLoginPopup()" class="nav-bar__profile-icon">
           {% endif %}
         </li>
         <li class="nav-bar__icon-link-item nav-bar__cart">

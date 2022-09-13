@@ -21,7 +21,8 @@ from django.urls import path, include, re_path
 urlpatterns = [
     re_path(r'admin/?', admin.site.urls),
     path('', include('app_shop.urls', namespace='app_shop')),
-    path('cart/', include('app_cart.urls', namespace='app_cart'))
+    path('cart/', include('app_cart.urls', namespace='app_cart')),
+    path('account/', include('app_accounts.urls', namespace='app_accounts'))
 ]
 
 if settings.DEBUG:
