@@ -37,6 +37,7 @@ class Order(models.Model):
     def get_total_cost(self) -> int:
         """Returns the total cost of the order"""
         return sum(item.get_cost() for item in self.items.all())
+    get_total_cost.short_description = 'Итоговая стоимость'
 
 
 class OrderItem(models.Model):
