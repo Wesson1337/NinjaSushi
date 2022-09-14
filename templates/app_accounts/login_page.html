@@ -10,9 +10,10 @@
 {% endblock %}
 
 {% block content %}
-  {% if request.user.is_authenticated %}
-    <p>Hello</p>
-  {% else %}
-    <p>You are not authenticated</p>
-  {% endif %}
+  <div class="login">
+    <form method="post" class="login__form">
+      {% csrf_token %}
+      
+    </form>
+  </div>
 {% endblock %}

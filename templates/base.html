@@ -37,11 +37,7 @@
       <div class="nav-bar__black-delimiter"></div>
       <ul class="nav-bar__icon-link-list">
         <li class="nav-bar__icon-link-item">
-          {% if request.user.is_authenticated %}
-            <a href="{% url 'app_accounts:personal_account' %}"><img src="{% static "svg/profile-icon.svg" %}" alt="profile-icon"></a>
-          {% else %}
-            <img src="{% static "svg/profile-icon.svg" %}" alt="profile-icon" onclick="openLoginPopup()" class="nav-bar__profile-icon">
-          {% endif %}
+            <a href="{% url 'app_accounts:login' %}"><img src="{% static "svg/profile-icon.svg" %}" alt="profile-icon"></a>
         </li>
         <li class="nav-bar__icon-link-item nav-bar__cart">
           <a href="{% url 'app_cart:cart_view' %}"><img src="{% static "svg/cart-icon.svg" %}" alt="cart-icon" class="nav-bar__cart-icon"></a>
@@ -55,9 +51,6 @@
           </a>
         </li>
       </ul>
-      <div class="nav-bar__login-pop-up">
-
-      </div>
     </nav>
   </header>
   {% block content %}{% endblock %}
