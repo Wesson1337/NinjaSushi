@@ -152,3 +152,5 @@ EMAIL_HOST_USER = "ninjasushi450@yandex.ru"
 EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_PASSWORD")
 EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+
+LOGIN_REDIRECT_URL = 'app_accounts:personal_account'
