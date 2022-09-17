@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+  Бесплатная доставка суши, роллов | Ninja Sushi - Личный кабинет
+{% endblock %}
+
+{% block css-link %}
+  {% static 'css/app_accounts/personal_account.css' %}
+{% endblock %}
+
+{% block content %}
+  <div class="registration">
+  <p class="big-text">Регистрация</p>
+    <form method="post" class="registration__form">
+      {% csrf_token %}
+      <label for="{{ form.username.id_for_label }}">Логин</label>
+      {{ form.username }}
+      {{ form.username.errors }}
+      <label for="{{ form.password1.id_for_label }}">Пароль</label>
+      {{ form.password1 }}
+      {{ form.password1.errors }}
+      <label for="{{ form.password2.id_for_label }}">Повторите пароль</label>
+      {{ form.password2 }}
+      {{ form.password2.errors }}
+      <label for="{{ form.first_name.id_for_label }}">Имя</label>
+      {{ form.first_name }}
+      {{ form.first_name.errors }}
+      <label for="{{ form.phone_number.id_for_label }}">Номер телефона</label>
+      {{ form.phone_number }}
+      {{ form.phone_number.errors }}
+      <label for="{{ form.date_of_birth.id_for_label }}">Дата рождения</label>
+      {{ form.date_of_birth }}
+      {{ form.date_of_birth.errors }}
+      <button type="submit">Войти</button>
+    </form>
+  </div>
+{% endblock %}

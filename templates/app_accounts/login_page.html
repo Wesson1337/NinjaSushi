@@ -11,6 +11,7 @@
 
 {% block content %}
   <div class="login">
+  <p class="big-text">Войти</p>
     <form method="post" class="login__form">
       {% csrf_token %}
       {{ form.non_field_errors }}
