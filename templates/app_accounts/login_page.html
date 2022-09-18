@@ -12,6 +12,7 @@
 {% block content %}
   <div class="login">
   <p class="big-text">Войти</p>
+    <a href="{% url 'app_accounts:registration' %}" class="big-text">Регистрация</a>
     <form method="post" class="login__form">
       {% csrf_token %}
       {{ form.non_field_errors }}
