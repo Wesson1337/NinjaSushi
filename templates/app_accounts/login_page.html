@@ -10,18 +10,22 @@
 {% endblock %}
 
 {% block content %}
-  <div class="login">
-  <p class="big-text">Войти</p>
-    <a href="{% url 'app_accounts:registration' %}" class="big-text">Регистрация</a>
-    <form method="post" class="login__form">
+  <div class="account">
+    <p class="big-text">Войти</p>
+    <a href="{% url 'app_accounts:registration' %}" class="big-text account__registration-link">Регистрация</a>
+    <form method="post" class="form">
       {% csrf_token %}
       {{ form.non_field_errors }}
-      <label for="{{ form.username.id_for_label }}">Логин</label>
-      {{ form.username }}
-      {{ form.username.errors }}
-      <label for="{{ form.password.id_for_label }}">Пароль</label>
-      {{ form.password }}
-      {{ form.password.errors }}
+      <div class="form-item">
+        <label for="{{ form.username.id_for_label }}">Логин</label>
+        {{ form.username }}
+        {{ form.username.errors }}
+      </div>
+      <div class="form-item">
+        <label for="{{ form.password.id_for_label }}">Пароль</label>
+        {{ form.password }}
+        {{ form.password.errors }}
+      </div>
       <button type="submit">Войти</button>
     </form>
   </div>

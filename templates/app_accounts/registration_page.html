@@ -10,9 +10,9 @@
 {% endblock %}
 
 {% block content %}
-  <div class="registration">
+  <div class="account">
   <p class="big-text">Регистрация</p>
-    <form method="post" class="registration__form">
+    <form method="post" class="form">
       {% csrf_token %}
       <label for="{{ form.username.id_for_label }}">Логин</label>
       {{ form.username }}
@@ -30,7 +30,7 @@
       {{ form.phone_number }}
       {{ form.phone_number.errors }}
       <label for="{{ form.date_of_birth.id_for_label }}">Дата рождения</label>
-      {{ form.date_of_birth }}
+      <input type="date" name="date_of_birth" class="input-field" id="id_date_of_birth">
       {{ form.date_of_birth.errors }}
       <button type="submit">Войти</button>
     </form>

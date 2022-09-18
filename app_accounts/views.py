@@ -17,6 +17,7 @@ class RegistrationView(FormView):
     form_class = RegistrationForm
 
     def form_valid(self, form):
+        """Registration and login if form is valid"""
         form.save()
         username = form.cleaned_data.get('username')
         raw_password = form.cleaned_data.get('password1')
@@ -29,5 +30,6 @@ class RegistrationView(FormView):
 
 
 def logout_view(request):
-    logout(request)
+    if request.user.is_authenticated:
+        logout(request)
     return redirect('app_shop:main_page')
