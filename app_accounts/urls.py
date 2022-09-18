@@ -13,5 +13,5 @@ urlpatterns = [
         authentication_form=LoginForm,
         redirect_authenticated_user=True
     ), name='login'),
-    path('registration', RegistrationView.as_view(), name='registration')
+    path('registration/', RegistrationView.as_view(), name='registration')
 ]
