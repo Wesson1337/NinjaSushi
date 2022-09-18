@@ -35,7 +35,7 @@
 }
 
 .account__registration-link:hover {
-  filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.3)) brightness(50%);
+  filter: drop-shadow(0 0 1px rgba(0, 0, 0, 0.5)) invert(30%);
 }
 
 .form {
@@ -43,6 +43,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  gap: 50px;
 }
 
 .input-field {
@@ -68,4 +69,18 @@
   outline: none;
   border: 2px solid rgba(0, 0, 0, 0.6);
   color: rgba(0, 0, 0, 0.84);
+}
+
+.form-item {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.fs22 {
+  font-size: 22px;
+}
+
+.fw500 {
+  font-weight: 500;
 }
