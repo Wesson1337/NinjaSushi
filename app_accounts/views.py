@@ -1,5 +1,4 @@
-from django.conf import settings
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.views.generic import FormView
@@ -29,3 +28,6 @@ class RegistrationView(FormView):
         return reverse('app_accounts:personal_account')
 
 
+def logout_view(request):
+    logout(request)
+    return redirect('app_shop:main_page')
