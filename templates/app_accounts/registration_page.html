@@ -35,6 +35,11 @@
         {{ form.first_name.errors }}
       </div>
       <div class="form-item">
+        <label for="{{ form.email.id_for_label }}" class="big-text fw500 fs22">Электронная почта</label>
+        {{ form.email }}
+        {{ form.email.errors }}
+      </div>
+      <div class="form-item">
         <label for="{{ form.phone_number.id_for_label }}" class="big-text fw500 fs22">Номер телефона</label>
         {{ form.phone_number }}
         {{ form.phone_number.errors }}
@@ -44,7 +49,7 @@
         <input type="date" name="date_of_birth" class="input-field" id="id_date_of_birth">
         {{ form.date_of_birth.errors }}
       </div>
-      <button type="submit">Войти</button>
+      <button type="submit" class="big-text fw500 fs22 submit-button">Войти</button>
     </form>
   </div>
 {% endblock %}

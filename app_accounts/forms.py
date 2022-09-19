@@ -16,8 +16,9 @@ class RegistrationForm(UserCreationForm):
         super(RegistrationForm, self).__init__(*args, **kwargs)
         for field in self.fields.values():
             field.widget.attrs['class'] = 'input-field'
+        self.fields['phone_number'].widget.attrs['placeholder'] = '+7(___)___-__-__'
 
     class Meta:
         model = CustomUser
-        fields = ('username', 'first_name', 'phone_number', 'date_of_birth', 'password1', 'password2')
+        fields = ('username', 'email', 'first_name', 'phone_number', 'date_of_birth', 'password1', 'password2')
 
