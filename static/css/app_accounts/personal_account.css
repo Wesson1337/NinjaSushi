@@ -121,3 +121,18 @@
   line-height: 100%;
   color: rgba(0, 0, 0, 0.84);
 }
+
+.nonfield {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.nonfield > li {
+  max-width: none;
+}
+
+.field-required:after {
+  content: "*";
+  color: rgba(237, 27, 36, 0.84);
+}
