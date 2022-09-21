@@ -12,7 +12,7 @@
 {% block content %}
   <div class="account">
     <p class="big-text">Войти</p>
-    <a href="{% url 'app_accounts:registration' %}" class="big-text account__registration-link">Регистрация</a>
+    <a href="{% url 'app_accounts:registration' %}" class="big-text account__link">Регистрация</a>
     <form method="post" class="form">
       {% csrf_token %}
       {{ form.non_field_errors }}
@@ -26,7 +26,7 @@
         {{ form.password }}
         {{ form.password.errors }}
       </div>
-      <button type="submit" class="big-text fw500 fs22 submit-button">Войти</button>
+      <button type="submit" class="big-text fw500 fs22 account__button">Войти</button>
     </form>
   </div>
 {% endblock %}

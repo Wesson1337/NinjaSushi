@@ -11,8 +11,52 @@
 
 {% block content %}
   {% if request.user.is_authenticated %}
-    <p>Hello</p>
-    <a href="{% url 'app_accounts:logout' %}">Выйти</a>
+    <div class="account">
+      <h2 class="big-text">Личный кабинет</h2>
+      <a href="{% url 'app_accounts:logout' %}" class="big-text account__link">
+        Выйти <img src="{% static 'svg/app_accounts/opened-door-aperture-svgrepo-com.svg' %}" alt="door">
+      </a>
+      {% with user=request.user %}
+        <div class="form">
+          <div class="form-item">
+            <p class="big-text fw500 fs22">Логин</p>
+            <div class="input-field">
+              {{ user.username }}
+            </div>
+          </div>
+          <div class="form-item">
+            <p class="big-text fw500 fs22">Имя</p>
+            <div class="input-field">
+              {{ user.first_name }}
+            </div>
+          </div>
+          <div class="form-item">
+            <p class="big-text fw500 fs22">Номер телефона</p>
+            <div class="input-field">
+              {{ user.phone_number }}
+            </div>
+          </div>
+          <div class="form-item">
+            <p class="big-text fw500 fs22">Дата рождения</p>
+            <div class="input-field">
+              {{ user.date_of_birth }}
+            </div>
+          </div>
+          <div class="form-item">
+            <p class="big-text fw500 fs22">Электронная почта</p>
+            <div class="input-field">
+              {{ user.email }}
+            </div>
+          </div>
+        </div>
+      {% endwith %}
+    </div>
+    <div class="order-history">
+      <h2 class="big-text">История заказов</h2>
+      {% for order in orders %}
+        <p>{{ order }}</p>
+      {% endfor %}
+    </div>
   {% else %}
     <p>You are not authenticated</p>
   {% endif %}

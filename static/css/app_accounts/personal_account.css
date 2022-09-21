@@ -1,6 +1,6 @@
 .account {
   margin-top: 50px;
-  margin-bottom: 20px;
+  margin-bottom: 50px;
   max-width: 1259px;
   width: 100%;
   background: #FFFFFF;
@@ -26,15 +26,16 @@
   color: rgba(0, 0, 0, 0.84);
 }
 
-.account__registration-link {
+.account__link {
+  display: flex;
+  align-items: center;
+  gap: 5px;
   transition: 0.25s ease-out;
-  position: relative;
-  top: 3px;
   font-weight: 300;
   font-size: 24px;
 }
 
-.account__registration-link:hover {
+.account__link:hover {
   filter: drop-shadow(0 0 1px rgba(0, 0, 0, 0.5)) invert(30%);
 }
 
@@ -47,6 +48,8 @@
 }
 
 .input-field {
+  display: flex;
+  align-items: center;
   box-sizing: border-box;
   width: 270px;
   height: 40px;
@@ -89,7 +92,7 @@
   font-weight: 500;
 }
 
-.submit-button {
+.account__button {
   align-self: flex-end;
   width: 270px;
   height: 60px;
@@ -135,4 +138,19 @@
 .field-required:after {
   content: "*";
   color: rgba(237, 27, 36, 0.84);
+}
+
+.order-history {
+  max-width: 1259px;
+  width: 100%;
+  background: #FFFFFF;
+  box-shadow: 0 4px 66px rgba(191, 188, 188, 0.27);
+  border-radius: 50px;
+  box-sizing: border-box;
+  padding: 80px;
+  gap: 50px;
+  
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
