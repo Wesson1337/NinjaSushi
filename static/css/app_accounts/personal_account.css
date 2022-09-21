@@ -140,7 +140,7 @@
   color: rgba(237, 27, 36, 0.84);
 }
 
-.order-history {
+.orders {
   max-width: 1259px;
   width: 100%;
   background: #FFFFFF;
@@ -154,3 +154,18 @@
   flex-wrap: wrap;
   justify-content: space-between;
 }
+
+.orders__container {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.gray-text {
+  color: rgba(0, 0, 0, 0.3);
+}
+
+.orders__table {
+
+}
+

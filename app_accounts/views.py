@@ -8,7 +8,7 @@ from app_accounts.forms import RegistrationForm
 
 def personal_account_view(request):
     if request.user.is_authenticated:
-        orders = request.user.orders.all()
+        orders = request.user.orders.all().order_by('-created')
         return render(request, 'app_accounts/personal_account_page.html', context={'orders': orders})
     return redirect('app_accounts:login')
 

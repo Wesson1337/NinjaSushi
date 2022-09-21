@@ -51,11 +51,38 @@
         </div>
       {% endwith %}
     </div>
-    <div class="order-history">
+    <div class="orders">
       <h2 class="big-text">История заказов</h2>
-      {% for order in orders %}
-        <p>{{ order }}</p>
-      {% endfor %}
+      <div class="orders__container">
+        {% if orders %}
+          <table class="orders__table">
+            <thead>
+              <tr class="orders__table-title">
+                <td>Дата</td>
+                <td>Номер заказа</td>
+                <td>Статус</td>
+                <td>Сумма заказа</td>
+                <td></td>
+              </tr>
+            </thead>
+            <tbody>
+              {% for order in orders %}
+                <tr class="orders__table-row">
+                  <td>{{ order.created }}</td>
+                  <td>{{ order.id }}</td>
+                  <td>{% if order.paid %}Оплачен{% else %}Не оплачен{% endif %}</td>
+                  <td>{{ order.get_total_cost }}</td>
+                  <td>
+                    <a href="#"><img src="{% static 'svg/app_accounts/eye-svgrepo-com.svg' %}" alt="eye"></a>
+                  </td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        {% else %}
+          <p class="big-text fw500 fs22 gray-text">На данный момент заказов нет :(</p>
+        {% endif %}
+      </div>
     </div>
   {% else %}
     <p>You are not authenticated</p>
