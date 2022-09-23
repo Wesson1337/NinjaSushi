@@ -1,7 +1,7 @@
 from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import render, redirect
 from django.urls import reverse
-from django.views.generic import FormView, DetailView
+from django.views.generic import FormView
 
 from app_accounts.forms import RegistrationForm
 
@@ -11,10 +11,6 @@ def personal_account_view(request):
         orders = request.user.orders.all().order_by('-created')
         return render(request, 'app_accounts/personal_account_page.html', context={'orders': orders})
     return redirect('app_accounts:login')
-
-
-class OrderHistoryDetailView(DetailView):
-    pass
 
 
 class RegistrationView(FormView):

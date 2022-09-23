@@ -22,7 +22,8 @@ urlpatterns = [
     re_path(r'admin/?', admin.site.urls),
     path('', include('app_shop.urls', namespace='app_shop')),
     path('cart/', include('app_cart.urls', namespace='app_cart')),
-    path('account/', include('app_accounts.urls', namespace='app_accounts'))
+    path('account/', include('app_accounts.urls', namespace='app_accounts')),
+    path('orders/', include('app_orders.urls', namespace='app_orders'))
 ]
 
 if settings.DEBUG:
