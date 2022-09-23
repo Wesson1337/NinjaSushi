@@ -10,5 +10,7 @@
 {% endblock %}
 
 {% block content %}
-
+  {% for item in order_items %}
+    {{ item.product.weight }}
+  {% endfor %}
 {% endblock %}
