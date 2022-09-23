@@ -1,5 +1,6 @@
 {% load static %}
 {% load cart_tags %}
+{% load cache %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -10,115 +11,119 @@
   <link rel="stylesheet" href="{% block css-link %}{% endblock %}">
 </head>
 <body>
-  <header class="header">
-    <a href="{% url "app_shop:main_page" %}"><div class="header__logo">
-      <div class="header__logo-img">
-        <img src="{% static "svg/logo.svg" %}" alt="logo">
-      </div>
-      <div class="header__logo-text">
-        <img src="{% static "svg/logo-text.svg" %}" alt="logo">
-      </div>
-    </div></a>
-    <nav class="nav-bar">
-      <ul class="nav-bar__text-link-list">
-        <li class="nav-bar__text-link-item">
-          <a class="nav-bar__text-link" href="/">Меню</a>
-        </li>
-        <li class="nav-bar__text-link-item">
-          <a class="nav-bar__text-link" href="#">Зона доставки</a>
-        </li>
-        <li class="nav-bar__text-link-item">
-          <a class="nav-bar__text-link" href="#">Вакансии</a>
-        </li>
-        <li class="nav-bar__text-link-item">
-          <a class="nav-bar__text-link" href="#">Контакты</a>
-        </li>
-      </ul>
-      <div class="nav-bar__black-delimiter"></div>
-      <ul class="nav-bar__icon-link-list">
-        <li class="nav-bar__icon-link-item">
-            <a href="{% url 'app_accounts:login' %}"><img src="{% static "svg/profile-icon.svg" %}" alt="profile-icon"></a>
-        </li>
-        <li class="nav-bar__icon-link-item nav-bar__cart">
-          <a href="{% url 'app_cart:cart_view' %}"><img src="{% static "svg/cart-icon.svg" %}" alt="cart-icon" class="nav-bar__cart-icon"></a>
-          <a href="{% url 'app_cart:cart_view' %}" class="nav-bar__cart-counter-link">
-          {% cart_length request as cart_length %}
-          {% if cart_length %}
-            <div class="nav-bar__cart-counter">
-              <p class="nav-bar__cart-counter-text">{{ cart_length }}</p>
-            </div>
-          {% endif %}
-          </a>
-        </li>
-      </ul>
-    </nav>
-  </header>
-  {% block content %}{% endblock %}
-  <footer class="footer">
-    <div class="footer__container">
-      <div class="footer__logo">
-        <div class="footer__logo-img">
+{% cache 600 header %}
+    <header class="header">
+      <a href="{% url "app_shop:main_page" %}"><div class="header__logo">
+        <div class="header__logo-img">
           <img src="{% static "svg/logo.svg" %}" alt="logo">
         </div>
-        <div class="footer__logo-text">
-          <img src="{% static "svg/logo-text_white.svg" %}" alt="logo">
+        <div class="header__logo-text">
+          <img src="{% static "svg/logo-text.svg" %}" alt="logo">
         </div>
-      </div>
-      <div class="footer__nav-bar">
-        <ul class="footer__text-link-list">
-          <li class="footer__text-link-item">
-            <a class="footer__text-link" href="{% url "app_shop:main_page" %}">Меню</a>
+      </div></a>
+      <nav class="nav-bar">
+        <ul class="nav-bar__text-link-list">
+          <li class="nav-bar__text-link-item">
+            <a class="nav-bar__text-link" href="/">Меню</a>
           </li>
-          <li class="footer__text-link-item">
-            <a class="footer__text-link" href="#">Зона доставки</a>
+          <li class="nav-bar__text-link-item">
+            <a class="nav-bar__text-link" href="#">Зона доставки</a>
+          </li>
+          <li class="nav-bar__text-link-item">
+            <a class="nav-bar__text-link" href="#">Вакансии</a>
+          </li>
+          <li class="nav-bar__text-link-item">
+            <a class="nav-bar__text-link" href="#">Контакты</a>
           </li>
         </ul>
-        <ul class="footer__text-link-list">
-          <li class="footer__text-link-item">
-            <a class="footer__text-link" href="#">Вакансии</a>
+        <div class="nav-bar__black-delimiter"></div>
+        <ul class="nav-bar__icon-link-list">
+          <li class="nav-bar__icon-link-item">
+              <a href="{% url 'app_accounts:login' %}"><img src="{% static "svg/profile-icon.svg" %}" alt="profile-icon"></a>
           </li>
-          <li class="footer__text-link-item">
-            <a class="footer__text-link" href="#">Контакты</a>
+          <li class="nav-bar__icon-link-item nav-bar__cart">
+            <a href="{% url 'app_cart:cart_view' %}"><img src="{% static "svg/cart-icon.svg" %}" alt="cart-icon" class="nav-bar__cart-icon"></a>
+            <a href="{% url 'app_cart:cart_view' %}" class="nav-bar__cart-counter-link">
+            {% cart_length request as cart_length %}
+            {% if cart_length %}
+              <div class="nav-bar__cart-counter">
+                <p class="nav-bar__cart-counter-text">{{ cart_length }}</p>
+              </div>
+            {% endif %}
+            </a>
           </li>
         </ul>
-        <ul class="footer__text-link-list">
-          <li class="footer__text-link-item">
-            <a class="footer__text-link" href="{% url 'app_accounts:personal_account' %}">Личный кабинет</a>
+      </nav>
+    </header>
+  {% endcache %}
+  {% block content %}{% endblock %}
+  {% cache 600 footer %}
+    <footer class="footer">
+      <div class="footer__container">
+        <div class="footer__logo">
+          <div class="footer__logo-img">
+            <img src="{% static "svg/logo.svg" %}" alt="logo">
+          </div>
+          <div class="footer__logo-text">
+            <img src="{% static "svg/logo-text_white.svg" %}" alt="logo">
+          </div>
+        </div>
+        <div class="footer__nav-bar">
+          <ul class="footer__text-link-list">
+            <li class="footer__text-link-item">
+              <a class="footer__text-link" href="{% url "app_shop:main_page" %}">Меню</a>
+            </li>
+            <li class="footer__text-link-item">
+              <a class="footer__text-link" href="#">Зона доставки</a>
+            </li>
+          </ul>
+          <ul class="footer__text-link-list">
+            <li class="footer__text-link-item">
+              <a class="footer__text-link" href="#">Вакансии</a>
+            </li>
+            <li class="footer__text-link-item">
+              <a class="footer__text-link" href="#">Контакты</a>
+            </li>
+          </ul>
+          <ul class="footer__text-link-list">
+            <li class="footer__text-link-item">
+              <a class="footer__text-link" href="{% url 'app_accounts:personal_account' %}">Личный кабинет</a>
+            </li>
+            <li class="footer__text-link-item">
+              <a class="footer__text-link" href="{% url 'app_cart:cart_view' %}">Корзина</a>
+            </li>
+          </ul>
+        </div>
+        <div class="footer__contacts">
+          <div class="footer__contact-phone">
+            <a href="tel:+79284432232" class="footer__contact-phone-link">+7 (928) 443 - 22 - 32</a>
+          </div>
+          <div class="footer__contact-address">
+            <p class="footer__contact-address-text">Балашиха, улица пр. Ленина, 32Д</p>
+          </div>
+        </div>
+        <ul class="footer__policies_list">
+          <li>
+            <a href="#" class="footer__policy-link">Политика конфиденциальности</a>
           </li>
-          <li class="footer__text-link-item">
-            <a class="footer__text-link" href="{% url 'app_cart:cart_view' %}">Корзина</a>
+          <li>
+            <a href="#" class="footer__policy-link">Пользовательское соглашение</a>
+          </li>
+        </ul>
+        <ul class="footer__icon-link-list">
+          <li class="footer__icon-link-item">
+            <a href="https://web.telegram.org/" target="_blank"><img src="{% static "svg/telegram.svg" %}" alt="telegram"></a>
+          </li>
+          <li class="footer__icon-link-item">
+            <a href="https://www.instagram.com/" target="_blank"><img src="{% static "svg/instagram.svg" %}" alt="instagram"></a>
+          </li>
+          <li class="footer__icon-link-item">
+            <a href="https://vk.com/" target="_blank"><img src="{% static "svg/vk-icon.svg" %}" alt="vk"></a>
           </li>
         </ul>
       </div>
-      <div class="footer__contacts">
-        <div class="footer__contact-phone">
-          <a href="tel:+79284432232" class="footer__contact-phone-link">+7 (928) 443 - 22 - 32</a>
-        </div>
-        <div class="footer__contact-address">
-          <p class="footer__contact-address-text">Балашиха, улица пр. Ленина, 32Д</p>
-        </div>
-      </div>
-      <ul class="footer__policies_list">
-        <li>
-          <a href="#" class="footer__policy-link">Политика конфиденциальности</a>
-        </li>
-        <li>
-          <a href="#" class="footer__policy-link">Пользовательское соглашение</a>
-        </li>
-      </ul>
-      <ul class="footer__icon-link-list">
-        <li class="footer__icon-link-item">
-          <a href="https://web.telegram.org/" target="_blank"><img src="{% static "svg/telegram.svg" %}" alt="telegram"></a>
-        </li>
-        <li class="footer__icon-link-item">
-          <a href="https://www.instagram.com/" target="_blank"><img src="{% static "svg/instagram.svg" %}" alt="instagram"></a>
-        </li>
-        <li class="footer__icon-link-item">
-          <a href="https://vk.com/" target="_blank"><img src="{% static "svg/vk-icon.svg" %}" alt="vk"></a>
-        </li>
-      </ul>
-    </div>
-  </footer>
+    </footer>
+  {% endcache %}
 </body>
 </html>
 <script src="{% static "js/smooth_scroll.js" %}"></script>
