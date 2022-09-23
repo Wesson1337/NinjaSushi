@@ -166,6 +166,62 @@
 }
 
 .orders__table {
-
+  width: 100%;
+  border-spacing: 0;
+  border-collapse: separate;
 }
 
+.orders__table > tbody {
+  box-shadow: 0 4px 66px rgba(191, 188, 188, 0.27);
+}
+
+.orders__table-title {
+  height: 25px;
+  
+  text-align: center;
+  font-family: 'Jost', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 21px;
+  
+  color: rgba(0, 0, 0, 0.84);
+}
+
+.orders__table-title > td {
+  padding: 10px;
+}
+
+.orders__table-row {
+  background: #FFFFFF;
+  height: 25px;
+  
+  text-align: center;
+  font-family: 'Jost', sans-serif;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 21px;
+  
+  color: rgba(0, 0, 0, 0.7);
+}
+
+.orders__table-row > td {
+  padding: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.02);
+}
+
+.orders__table-row > td > img {
+  transition: 0.25s ease-out;
+  position: relative;
+  top: 2px;
+  cursor: pointer;
+  width: 25px;
+  height: 25px;
+  
+  filter: opacity(0.7);
+}
+
+.orders__table-row > td > img:hover {
+  filter: opacity(0.7) drop-shadow(0 0 1px black) invert(30%);
+}
