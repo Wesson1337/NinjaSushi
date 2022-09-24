@@ -208,7 +208,8 @@
 
 .orders__table-row > td {
   padding: 5px;
-  border: 1px solid rgba(0, 0, 0, 0.02);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.02);
+  border-top: 1px solid rgba(0, 0, 0, 0.02);
 }
 
 .orders__table-row > td > img {

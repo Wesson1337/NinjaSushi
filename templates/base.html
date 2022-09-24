@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="{% block css-link %}{% endblock %}">
 </head>
 <body>
-{% cache 600 header %}
+  {% cache 600 header %}
     <header class="header">
       <a href="{% url "app_shop:main_page" %}"><div class="header__logo">
         <div class="header__logo-img">

@@ -5,5 +5,9 @@
   background: #FFFFFF;
   box-shadow: 0 4px 66px rgba(191, 188, 188, 0.27);
   border-radius: 50px;
+  
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 
