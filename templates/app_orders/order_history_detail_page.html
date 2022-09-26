@@ -10,9 +10,13 @@
 {% endblock %}
 
 {% block content %}
-  <div class="content-block">
-    {% for item in order_items %}
-      1
-    {% endfor %}
-  </div>
+  {% if request.user == order_user %}
+    <div class="content-block">
+      {% for item in order_items %}
+        1
+      {% endfor %}
+    </div>
+  {% else %}
+   <p>You are not owner of order</p>
+  {% endif %}
 {% endblock %}

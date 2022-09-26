@@ -10,5 +10,6 @@ class OrderHistoryDetailView(DetailView):
 
     def get_context_data(self, **kwargs):
         order_items = OrderItem.objects.select_related('product').filter(order=self.kwargs.get('pk'))
-        context = {'order_items': order_items}
+        order_user = self.object.user
+        context = {'order_items': order_items, 'order_user': order_user}
         return context
