@@ -1,6 +1,6 @@
 {% load static %}
-{% load cart_tags %}
 {% load cache %}
+{% load cart_tags %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -11,7 +11,8 @@
   <link rel="stylesheet" href="{% block css-link %}{% endblock %}">
 </head>
 <body>
-  {% cache 600 header %}
+  {% cart_length request as cart_length %}
+  {% cache 600 header cart_length %}
     <header class="header">
       <a href="{% url "app_shop:main_page" %}"><div class="header__logo">
         <div class="header__logo-img">
@@ -44,7 +45,6 @@
           <li class="nav-bar__icon-link-item nav-bar__cart">
             <a href="{% url 'app_cart:cart_view' %}"><img src="{% static "svg/cart-icon.svg" %}" alt="cart-icon" class="nav-bar__cart-icon"></a>
             <a href="{% url 'app_cart:cart_view' %}" class="nav-bar__cart-counter-link">
-            {% cart_length request as cart_length %}
             {% if cart_length %}
               <div class="nav-bar__cart-counter">
                 <p class="nav-bar__cart-counter-text">{{ cart_length }}</p>

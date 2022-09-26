@@ -10,13 +10,25 @@
 {% endblock %}
 
 {% block content %}
-  {% if request.user == order_user %}
+  {% if request.user == order.user %}
     <div class="content-block">
+      <p class="big-text">Информация о заказе</p>
+      <div class="order-info">
+        <p class="big-text fs24">
+          Номер заказа: <span class="little-text">{{ order.id }}</span>
+        </p>
+        <p class="big-text fs24">
+          Дата заказа: <span class="little-text">{{ order.created }}</span>
+        </p>
+        <p class="big-text fs24">
+          Адрес доставки: <span class="little-text">{{ order.get_full_address }}</span>
+        </p>
+      </div>
       {% for item in order_items %}
         1
       {% endfor %}
     </div>
   {% else %}
-   <p>You are not owner of order</p>
+   <p>You are not owner of the order</p>
   {% endif %}
 {% endblock %}

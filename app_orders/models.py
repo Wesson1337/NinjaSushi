@@ -39,6 +39,11 @@ class Order(models.Model):
         return sum(item.get_cost() for item in self.items.all())
     get_total_cost.short_description = 'Итоговая стоимость'
 
+    def get_full_address(self):
+        """Returns full address in string format"""
+        return f'{self.city}, {self.street} {self.house}, {self.flat}'
+    get_full_address.short_description = 'Адрес'
+
 
 class OrderItem(models.Model):
     """Model for products in order"""

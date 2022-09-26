@@ -1,4 +1,3 @@
-from django.shortcuts import render
 from django.views.generic import DetailView
 from app_orders.models import Order, OrderItem
 
@@ -9,7 +8,7 @@ class OrderHistoryDetailView(DetailView):
     context_object_name = 'order'
 
     def get_context_data(self, **kwargs):
+        order = self.object
         order_items = OrderItem.objects.select_related('product').filter(order=self.kwargs.get('pk'))
-        order_user = self.object.user
-        context = {'order_items': order_items, 'order_user': order_user}
+        context = {'order_items': order_items, 'order': order}
         return context
