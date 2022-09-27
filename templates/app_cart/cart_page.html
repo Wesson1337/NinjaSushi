@@ -68,27 +68,27 @@
         {% endwith %}
           <div class="address__input-block">
             <label for="id_city" class="address__label input-required">Город</label>
-            <input type="text" name="city" maxlength="50" required id="id_city" class="address__input">
+            <input type="text" name="city" maxlength="50" required id="id_city" class="address__input" value="{{ last_order.city }}">
           </div>
           <div class="address__input-block">
             <label for="id_street" class="address__label input-required">Улица</label>
-            <input type="text" name="street" maxlength="50" required id="id_street" class="address__input">
+            <input type="text" name="street" maxlength="50" required id="id_street" class="address__input" value="{{ last_order.street }}">
           </div>
         <div class="address__input-block">
           <label for="id_house" class="address__label input-required">Дом</label>
-          <input type="number" name="house" min="0" required id="id_house" class="address__input">
+          <input type="number" name="house" min="0" required id="id_house" class="address__input" value="{{ last_order.house }}">
         </div>
         <div class="address__input-block">
           <label for="id_flat" class="address__label input-required">Квартира</label>
-          <input type="number" name="flat" min="0" required id="id_flat" class="address__input">
+          <input type="number" name="flat" min="0" required id="id_flat" class="address__input" value="{{ last_order.flat }}">
         </div>
         <div class="address__input-block">
           <label for="id_floor" class="address__label">Этаж</label>
-          <input type="number" name="floor" min="0" id="id_floor" class="address__input">
+          <input type="number" name="floor" min="0" id="id_floor" class="address__input" value="{{ last_order.floor }}">
         </div>
         <div class="address__input-block">
           <label for="id_intercom" class="address__label">Домофон</label>
-          <input type="text" name="intercom" maxlength="20" id="id_intercom" class="address__input">
+          <input type="text" name="intercom" maxlength="20" id="id_intercom" class="address__input" value="{{ last_order.intercom }}">
         </div>
         <div class="address__input-block">
           <label for="id_payment_method" class="address__label">Способ оплаты</label>
