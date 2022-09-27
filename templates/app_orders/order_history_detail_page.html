@@ -24,11 +24,20 @@
           Адрес доставки: <span class="little-text">{{ order.get_full_address }}</span>
         </p>
       </div>
-      {% for item in order_items %}
-        1
-      {% endfor %}
+      <a href="{% url 'app_orders:repeat_order' order.id %}">Повторить заказ</a>
+    </div>
+    <div class="content-block">
+      <p class="big-text">Состав заказа</p>
+      <div class="order-items">
+        {% for item in order_items %}
+          <div class="card">
+            <img src="{{ item.product.image.url }}" alt="product-image">
+
+          </div>
+        {% endfor %}
+      </div>
     </div>
   {% else %}
-   <p>You are not owner of the order</p>
+   <p>You are not the order owner</p>
   {% endif %}
 {% endblock %}

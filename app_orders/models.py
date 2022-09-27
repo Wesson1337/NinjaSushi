@@ -1,6 +1,8 @@
+from django.conf import settings
 from django.db import models
 
 from app_accounts.models import CustomUser
+from app_cart.cart import Cart
 from app_shop.models import Product
 
 PAYMENT_METHODS = [
@@ -43,6 +45,15 @@ class Order(models.Model):
         """Returns full address in string format"""
         return f'{self.city}, {self.street} {self.house}, {self.flat}'
     get_full_address.short_description = 'Адрес'
+
+    def repeat_order(self, request):
+        cart = Cart(request)
+        cart.clear()
+        for item in self.items.select_related('product').all():
+            product_id = str(item.product.id)
+            cart.cart[product_id] = {'quantity': item.quantity,
+                                     'price': item.price}
+        cart.save()
 
 
 class OrderItem(models.Model):

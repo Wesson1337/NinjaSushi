@@ -1,3 +1,5 @@
+from django.http import HttpResponseRedirect
+from django.shortcuts import redirect
 from django.views.generic import DetailView
 from app_orders.models import Order, OrderItem
 
@@ -12,3 +14,9 @@ class OrderHistoryDetailView(DetailView):
         order_items = OrderItem.objects.select_related('product').filter(order=self.kwargs.get('pk'))
         context = {'order_items': order_items, 'order': order}
         return context
+
+
+def repeat_order_view(request, order_id: int) -> HttpResponseRedirect:
+    order = Order.objects.get(id=order_id)
+    order.repeat_order(request)
+    return redirect('app_cart:cart_view')

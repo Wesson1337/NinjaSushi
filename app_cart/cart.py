@@ -73,6 +73,7 @@ class Cart:
     def clear(self) -> None:
         """Deleting cart from user session"""
 
+        self.cart = {}
         del self.session[settings.CART_SESSION_ID]
         self.session.modified = True
 
