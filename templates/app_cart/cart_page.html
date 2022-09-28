@@ -55,15 +55,15 @@
         {% with user=request.user %}
           <div class="address__input-block">
             <label for="id_name" class="address__label input-required">Ваше имя</label>
-            <input type="text" name="name" maxlength="50" required id="id_name" class="address__input" value="{{ user.first_name }}">
+            <input type="text" name="name" maxlength="50" required id="id_name" class="address__input" value="{% firstof user.first_name last_order.name %}">
           </div>
           <div class="address__input-block">
             <label for="id_email" class="address__label input-required">Электронная почта</label>
-            <input type="email" name="email" maxlength="254" required id="id_email" class="address__input" value="{{ user.email }}">
+            <input type="email" name="email" maxlength="254" required id="id_email" class="address__input" value="{% firstof user.email last_order.email %}">
           </div>
           <div class="address__input-block">
             <label for="id_phone_number" class="address__label input-required">Номер телефона</label>
-            <input type="text" name="phone_number" maxlength="20" required id="id_phone_number" class="address__input" placeholder="+7(___)___-__-__" value="{{ user.phone_number }}">
+            <input type="text" name="phone_number" maxlength="20" required id="id_phone_number" class="address__input" placeholder="+7(___)___-__-__" value="{% firstof user.phone_number last_order.phone_number %}">
           </div>
         {% endwith %}
           <div class="address__input-block">

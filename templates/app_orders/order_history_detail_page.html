@@ -23,19 +23,37 @@
         <p class="big-text fs24">
           Адрес доставки: <span class="little-text">{{ order.get_full_address }}</span>
         </p>
+        <p class="big-text fs24">
+          Статус заказа: <span class="little-text">{% if order.paid %}Оплачен{% else %}Не оплачен{% endif %}</span>
+        </p>
+        <a href="{% url 'app_orders:repeat_order' order.id %}">Повторить заказ</a>
       </div>
-      <a href="{% url 'app_orders:repeat_order' order.id %}">Повторить заказ</a>
     </div>
     <div class="content-block">
       <p class="big-text">Состав заказа</p>
       <div class="order-items">
         {% for item in order_items %}
-          <div class="card">
-            <img src="{{ item.product.image.url }}" alt="product-image">
-
-          </div>
+          {% with product=item.product %}
+            <div class="card">
+              <img src="{{ product.image.url }}" alt="product-image">
+              <div class="card__product-description">
+                <p class="card__product-name">{{ product.name }}</p>
+                <p class="card__product-chars">{{ product.weight }} гр. {{ product.amount }} шт.</p>
+                <p class="card__product-composition">{{ product.composition }}</p>
+              </div>
+              <p class="card__item-price">
+                <span class="card__item-price-number">{{ item.price }}₽</span>
+                <span class="card__item-price-sign">x</span>
+                <span class="card__item-price-number">{{ item.quantity }}</span>
+                <span class="card__item-price-sign">=</span>
+                <span class="big-text">{{ item.get_cost }}₽</span>
+              </p>
+            </div>
+          {% endwith %}
         {% endfor %}
       </div>
+      <p class="big-text">Итого:</p>
+      <p class="big-text">{{ order.get_total_cost }}₽</p>
     </div>
   {% else %}
    <p>You are not the order owner</p>
