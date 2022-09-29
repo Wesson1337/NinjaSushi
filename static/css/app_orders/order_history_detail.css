@@ -1,7 +1,9 @@
 .content-block {
   max-width: 1260px;
   width: 100%;
+  box-sizing: border-box;
   margin-top: 50px;
+  padding: 80px;
   background: #FFFFFF;
   box-shadow: 0 4px 66px rgba(191, 188, 188, 0.27);
   border-radius: 50px;
@@ -9,5 +11,154 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  gap: 50px;
 }
 
+.big-text {
+  margin: 0;
+  font-family: 'Geometria', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 32px;
+  color: rgba(0, 0, 0, 0.84);
+}
+
+.fs22 {
+  font-size: 22px;
+}
+
+.fw500 {
+  font-weight: 500;
+}
+
+.order-info {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 100%;
+  gap: 30px;
+}
+
+.order-info__address {
+  width: 100%;
+}
+
+.little-text {
+  font-family: 'Jost', sans-serif;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 23px;
+}
+
+.order_info__repeat-order-button {
+  transition: 0.25s ease-out;
+  cursor: pointer;
+  width: 230px;
+  height: 46px;
+  position: relative;
+  bottom: 6px;
+  
+  border: 0;
+  background: #FF9999;
+  border-radius: 137px;
+  
+  color: #FFFFFF;
+}
+
+.order_info__repeat-order-button:hover {
+  filter: drop-shadow(0 0 5px rgba(255, 153, 153, 0.7));
+}
+
+.order-items {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 28px;
+}
+
+.card {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  
+  box-sizing: border-box;
+  padding: 20px 30px;
+  
+  background: #FFFFFF;
+  box-shadow: 0 4px 66px rgba(191, 188, 188, 0.27);
+  border-radius: 24px;
+}
+
+.card__product-description {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.card__product-description-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 6px;
+}
+
+.card__product-image {
+  width: 280px;
+  height: 225px;
+  object-fit: contain;
+}
+
+.card__product-chars {
+  margin: 0;
+  font-family: 'Jost', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18px;
+  color: rgba(133, 133, 133, 0.5);
+}
+
+.card__product-composition {
+  margin: 0;
+  max-width: 387px;
+  
+  font-family: 'Jost', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 21px;
+  color: #4A4A4A;
+}
+
+.card__item-price {
+  margin-top: auto;
+  margin-left: auto;
+}
+
+.card__item-price-number {
+  position: relative;
+  bottom: 2px;
+  font-family: 'Jost', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 18px;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.card__item-price-sign {
+  margin: 0 10px;
+  position: relative;
+  bottom: 3px;
+  font-family: 'Jost', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 18px;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.card__item-total-price {
+  font-size: 28px;
+}

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600&display=swap');
 
 @font-face {
   font-family: "Geometria";
@@ -285,5 +285,11 @@ body {
 
 .footer__icon-link-item {
   display: flex;
+}
+
+@media (max-width: 1180px) {
+  body {
+    background-size: auto 11000px;
+  }
 }
 

@@ -43,7 +43,7 @@ class Order(models.Model):
 
     def get_full_address(self):
         """Returns full address in string format"""
-        return f'{self.city}, {self.street} {self.house}, {self.flat}'
+        return f'г. {self.city}, ул. {self.street}, д. {self.house}, кв. {self.flat}'
     get_full_address.short_description = 'Адрес'
 
     def repeat_order(self, request):
