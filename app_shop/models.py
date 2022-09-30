@@ -18,7 +18,7 @@ class Product(models.Model):
     composition = models.TextField(default=None, blank=True, verbose_name='состав')
     weight = models.PositiveIntegerField(verbose_name='вес (гр.)')
     price = models.PositiveIntegerField(verbose_name='цена (₽)')
-    image = models.ImageField(upload_to='img/app_shop/product_images', verbose_name='фото')
+    image = models.ImageField(blank=True, null=True, upload_to='img/app_shop/product_images', verbose_name='фото')
     category = models.ForeignKey(Category, on_delete=models.CASCADE, verbose_name='категория')
 
     class Meta:
