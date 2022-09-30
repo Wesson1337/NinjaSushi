@@ -1,12 +1,15 @@
 import tempfile
+
 from django.test import TestCase, Client
 from django.urls import reverse
 
+from app_accounts.models import CustomUser
 from app_cart.cart import Cart
+from app_orders.models import Order
 from app_shop.models import Product, Category
 
 
-class CartTestCase(TestCase):
+class CartTest(TestCase):
 
     @classmethod
     def setUpTestData(cls):
@@ -69,7 +72,7 @@ class CartTestCase(TestCase):
     def test_cart_iterations(self):
         cart, get_request, product1 = self.cart, self.get_request, self.product1
         for item in cart:
-            self.assertTrue(isinstance(item['product'], Product))
+            self.assertIsInstance(item['product'], Product)
             product = item['product']
             if product == product1:
                 self.assertEqual(item, {
@@ -101,3 +104,36 @@ class CartTestCase(TestCase):
         cart.clear()
         self.assertEqual(cart.cart, {})
         self.assertEqual(get_request.session.get('cart'), None)
+
+    def test_cart_add_product_view(self):
+        response = self.client.get(reverse('app_cart:cart_add_product', args=[1]))
+        self.assertRedirects(response, reverse('app_shop:main_page'), status_code=302,
+                             target_status_code=200)
+
+    def test_cart_remove_unit_of_product_view(self):
+        response = self.client.get(reverse('app_cart:cart_remove_unit_of_product', args=[1]))
+        self.assertRedirects(response, reverse('app_shop:main_page'), status_code=302,
+                             target_status_code=200)
+
+    def test_cart_remove_product_view(self):
+        response = self.client.get(reverse('app_cart:cart_remove_product', args=[1]))
+        self.assertRedirects(response, reverse('app_shop:main_page'), status_code=302,
+                             target_status_code=200)
+
+    def test_cart_clear_view(self):
+        response = self.client.get(reverse('app_cart:cart_clear'))
+        self.assertRedirects(response, reverse('app_shop:main_page'), status_code=302,
+                             target_status_code=200)
+
+    def test_cart_get_view(self):
+        user = CustomUser.objects.create_user(username='user_test', password='Testu123ser', first_name='test_user',
+                                              date_of_birth='2022-09-30', phone_number='fds')
+        user.save()
+        self.client.login(username='user_test', password='Testu123ser')
+        order = Order.objects.create(user=user, name='test', email='test@mail.ru', city='test',
+                                     street='test', flat=6, house=5, floor=3)
+        order.save()
+        response = self.client.get(reverse('app_cart:cart_view'))
+        self.assertEqual(response.context['last_order'], order)
+        self.assertIsInstance(response.context['cart'], Cart)
+        self.assertEqual(response.status_code, 200)

@@ -15,7 +15,8 @@ def cart_add_product(request, product_id: int) -> HttpResponseRedirect:
     cart = Cart(request)
     product = get_object_or_404(Product, id=product_id)
     cart.add(product=product)
-    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+    url_came_from = request.META.get('HTTP_REFERER')
+    return redirect(url_came_from) if url_came_from else redirect('app_shop:main_page')
 
 
 def cart_remove_unit_of_product(request, product_id: int) -> HttpResponseRedirect:
@@ -24,7 +25,8 @@ def cart_remove_unit_of_product(request, product_id: int) -> HttpResponseRedirec
     cart = Cart(request)
     product = get_object_or_404(Product, id=product_id)
     cart.remove_unit_of_product(product)
-    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+    url_came_from = request.META.get('HTTP_REFERER')
+    return redirect(url_came_from) if url_came_from else redirect('app_shop:main_page')
 
 
 def cart_remove_product(request, product_id: int) -> HttpResponseRedirect:
@@ -33,7 +35,8 @@ def cart_remove_product(request, product_id: int) -> HttpResponseRedirect:
     cart = Cart(request)
     product = get_object_or_404(Product, id=product_id)
     cart.remove_product(product)
-    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+    url_came_from = request.META.get('HTTP_REFERER')
+    return redirect(url_came_from) if url_came_from else redirect('app_shop:main_page')
 
 
 def cart_clear(request) -> HttpResponseRedirect:
@@ -41,7 +44,8 @@ def cart_clear(request) -> HttpResponseRedirect:
 
     cart = Cart(request)
     cart.clear()
-    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+    url_came_from = request.META.get('HTTP_REFERER')
+    return redirect(url_came_from) if url_came_from else redirect('app_shop:main_page')
 
 
 class CartView(View):

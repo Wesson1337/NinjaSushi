@@ -1,5 +1,5 @@
 from django.http import HttpResponseRedirect, HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views import View
 from app_newsletter.forms import NewsletterEmailForm
 from app_newsletter.models import NewsletterEmail
@@ -23,7 +23,7 @@ class MainPageView(View):
             if not NewsletterEmail.objects.filter(email=email):
                 form.save()
                 newsletter_subscription_email_task.delay(email)
-        return HttpResponseRedirect('/')
+        return redirect('app_shop:main_page')
 
 
 class MainPageDetailView(View):
