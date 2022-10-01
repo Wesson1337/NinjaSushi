@@ -55,7 +55,6 @@ class CartTest(TestCase):
 
     def test_cart_add(self):
         cart, get_request = self.cart, self.get_request
-        cart.save()
         self.assertEqual(get_request.session['cart'], {
             '1': {'quantity': 2, 'price': 200},
             '2': {'quantity': 1, 'price': 99}
@@ -137,3 +136,40 @@ class CartTest(TestCase):
         self.assertEqual(response.context['last_order'], order)
         self.assertIsInstance(response.context['cart'], Cart)
         self.assertEqual(response.status_code, 200)
+
+    def test_cart_post_view(self):
+        session = self.client.session
+        session['cart'] = self.get_request.session['cart']
+        session.save()
+        user = CustomUser.objects.create_user(username='user_test', password='Testu123ser', first_name='test_user',
+                                              date_of_birth='2022-09-30', phone_number='fds')
+        user.save()
+        self.client.login(username='user_test', password='Testu123ser')
+        response = self.client.post(reverse('app_cart:cart_view'), data={'name': 'test',
+                                                                         'email': 'test@mail.ru',
+                                                                         'phone_number': 'test',
+                                                                         'city': 'test',
+                                                                         'street': 'test',
+                                                                         'house': 5,
+                                                                         'flat': 3,
+                                                                         'floor': 2,
+                                                                         'intercom': 'fsdaffd',
+                                                                         'payment_method': 'card_c'
+                                                                         })
+        self.assertEqual(response.status_code, 200)
+        order = Order.objects.last()
+        self.assertEqual(order.user, user)
+        for item in order.items.all():
+            if item.product.id == 1:
+                self.assertEqual(item.price, 200)
+                self.assertEqual(item.quantity, 2)
+            else:
+                self.assertEqual(item.price, 99)
+                self.assertEqual(item.quantity, 1)
+
+    def test_cart_post_view_incorrect_data(self):
+        session = self.client.session
+        session['cart'] = self.get_request.session['cart']
+        session.save()
+        response = self.client.post(reverse('app_cart:cart_view'), data={'name': 'test'})
+        self.assertRedirects(response, reverse('app_cart:cart_view'))
