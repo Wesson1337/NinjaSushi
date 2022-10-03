@@ -7,7 +7,7 @@ from app_orders.models import Order, OrderItem
 from app_shop.models import Product, Category
 
 
-class TestOrderModel(TestCase):
+class TestOrder(TestCase):
 
     @classmethod
     def setUpTestData(cls):
@@ -63,7 +63,7 @@ class TestOrderModel(TestCase):
         order = self.order
         self.assertIsInstance(order.get_full_address(), str)
 
-    def test_order_repeat_order(self):
+    def test_repeat_order(self):
         client = Client()
         order = self.order
         response = client.get(reverse('app_shop:main_page'))
@@ -79,3 +79,23 @@ class TestOrderModel(TestCase):
     def test_order_item_string(self):
         order_item = self.order_item
         self.assertIsInstance(str(order_item), str)
+
+    def test_order_history_detail_view(self):
+        order = self.order
+        client = Client()
+        response = client.get(reverse('app_orders:order_history_detail', args=[order.id]))
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.context['order'], order)
+        self.assertEqual(response.context['order_items'][0], self.order_item)
+
+    def test_repeat_order_view(self):
+        order = self.order
+        client = Client()
+        response = client.get(reverse('app_orders:repeat_order', args=[order.id]))
+        self.assertRedirects(response, reverse('app_cart:cart_view'))
+        self.assertEqual(client.session['cart'], {
+            str(self.product.id): {
+                'quantity': 2,
+                'price': 200
+            }
+        })
