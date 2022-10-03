@@ -25,7 +25,7 @@ class CartTest(TestCase):
             composition='Рис, огурец, лосось',
             weight=120,
             price=200,
-            category_id=1,
+            category=category2,
             image=tempfile.NamedTemporaryFile(suffix='.png').name
         )
         product1.save()
@@ -36,7 +36,7 @@ class CartTest(TestCase):
             composition='Рис, креветка',
             weight=35,
             price=99,
-            category_id=2,
+            category=category2,
             image=tempfile.NamedTemporaryFile(suffix='.png').name
         )
         product2.save()
@@ -54,7 +54,7 @@ class CartTest(TestCase):
         self.cart.add(product=self.product2)
 
     def test_cart_add(self):
-        cart, get_request = self.cart, self.get_request
+        get_request = self.get_request
         self.assertEqual(get_request.session['cart'], {
             '1': {'quantity': 2, 'price': 200},
             '2': {'quantity': 1, 'price': 99}
@@ -105,17 +105,17 @@ class CartTest(TestCase):
         self.assertEqual(get_request.session.get('cart'), None)
 
     def test_cart_add_product_view(self):
-        response = self.client.get(reverse('app_cart:cart_add_product', args=[1]))
+        response = self.client.get(reverse('app_cart:cart_add_product', args=[self.product1.id]))
         self.assertRedirects(response, reverse('app_shop:main_page'), status_code=302,
                              target_status_code=200)
 
     def test_cart_remove_unit_of_product_view(self):
-        response = self.client.get(reverse('app_cart:cart_remove_unit_of_product', args=[1]))
+        response = self.client.get(reverse('app_cart:cart_remove_unit_of_product', args=[self.product1.id]))
         self.assertRedirects(response, reverse('app_shop:main_page'), status_code=302,
                              target_status_code=200)
 
     def test_cart_remove_product_view(self):
-        response = self.client.get(reverse('app_cart:cart_remove_product', args=[1]))
+        response = self.client.get(reverse('app_cart:cart_remove_product', args=[self.product1.id]))
         self.assertRedirects(response, reverse('app_shop:main_page'), status_code=302,
                              target_status_code=200)
 
