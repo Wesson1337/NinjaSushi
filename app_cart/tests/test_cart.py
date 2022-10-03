@@ -25,7 +25,7 @@ class CartTest(TestCase):
             composition='Рис, огурец, лосось',
             weight=120,
             price=200,
-            category=category2,
+            category=category1,
             image=tempfile.NamedTemporaryFile(suffix='.png').name
         )
         product1.save()
