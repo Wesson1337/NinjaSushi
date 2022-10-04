@@ -81,6 +81,3 @@ class ShopViewTestCase(TestCase):
         self.assertEqual(response.context['categories'][0], self.category1)
         self.assertEqual(response.context['category'], self.category1)
         self.assertEqual(response.context['products'][0], self.product1)
-
-
-
