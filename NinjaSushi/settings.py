@@ -84,11 +84,11 @@ WSGI_APPLICATION = 'NinjaSushi.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'ninja_sushi',
-        'HOST': 'localhost',
-        'USER': 'wesson',
-        'PORT': '5432',
-        'PASSWORD': os.environ.get('POSTGRES_PASSWORD')
+        'NAME': os.environ.get('POSTGRES_DB'),
+        'USER': os.environ.get('POSTGRES_USER'),
+        'PASSWORD': os.environ.get('POSTGRES_PASSWORD'),
+        'HOST': 'db',
+        'PORT': 5432,
     }
 }
 
