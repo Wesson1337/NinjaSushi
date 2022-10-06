@@ -8,5 +8,3 @@ COPY requirements.txt /NinjaSushi/
 RUN pip install -r requirements.txt
 COPY . /NinjaSushi/
 
-CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
-

@@ -158,3 +158,5 @@ CACHES = {
         'LOCATION': 'cache_table',
     }
 }
+
+CELERY_BROKER_URL = "amqp://rabbitmq"
