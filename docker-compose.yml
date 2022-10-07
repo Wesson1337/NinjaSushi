@@ -35,8 +35,9 @@ services:
       - db
       - celery_beat
   celery_beat:
-    build: .
+    <<: *web
     command: celery -A NinjaSushi beat --loglevel=info --max-interval=999999
+    ports: []
     depends_on:
       - rabbitmq
       - db
