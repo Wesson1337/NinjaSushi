@@ -1,0 +1,28 @@
+FROM python:3.10
+
+ENV APP_HOME=/home/app/NinjaSushi
+WORKDIR /home/app/NinjaSushi
+
+ENV PYTHONDONTWRITEBYTECODE=1
+ENV PYTHONUNBUFFERED=1
+
+RUN apt-get update \
+    && apt-get install netcat -y
+RUN apt-get upgrade -y
+
+RUN addgroup --system app && adduser --system --ingroup app app
+
+RUN python -m pip install --upgrade pip
+COPY requirements.txt $APP_HOME
+RUN pip install -r requirements.txt
+
+COPY . $APP_HOME
+
+RUN sed -i 's/\r$//g' /home/app/NinjaSushi/entrypoint.sh
+RUN chmod +x /home/app/NinjaSushi/entrypoint.sh
+
+RUN chown -R app:app $APP_HOME
+
+USER app
+
+ENTRYPOINT ["sh", "/home/app/NinjaSushi/entrypoint.sh"]
