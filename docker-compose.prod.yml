@@ -18,7 +18,8 @@ services:
     restart: on-failure
     command: gunicorn NinjaSushi.wsgi:application --bind 0.0.0.0:8000
     volumes:
-      - ./media:/home/app/NinjaSushi/media
+      - static_volume:/home/app/NinjaSushi/staticfiles
+      - media_volume:/home/app/NinjaSushi/media
     expose:
       - 8000
     env_file:
@@ -54,7 +55,15 @@ services:
   nginx:
     build:
       context: ./nginx
+    volumes:
+      - static_volume:/home/app/NinjaSushi/staticfiles
+      - media_volume:/home/app/NinjaSushi/media
     ports:
-      - "1337:80"
+      - "80:80"
+      - "443:443"
     depends_on:
       - web
+
+volumes:
+  static_volume:
+  media_volume:
