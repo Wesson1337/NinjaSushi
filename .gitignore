@@ -173,3 +173,5 @@ dmypy.json
 cython_debug/!/Dockerfile.prod
 
 certbot/
+
+prod_data/

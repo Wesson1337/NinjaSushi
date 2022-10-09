@@ -32,7 +32,8 @@ services:
       - celery_beat
       - celery_worker
   rabbitmq:
-    image: rabbitmq:3.11
+    image: rabbitmq:3.11-alpine
+    restart: always
   celery_worker:
     <<: *web
     command: celery -A NinjaSushi worker --loglevel=info
@@ -53,14 +54,14 @@ services:
       - rabbitmq
       - db
   nginx:
-    build:
-      context: ./nginx
+    image: nginx:latest
     restart: always
     volumes:
       - static_volume:/home/app/NinjaSushi/staticfiles
       - media_volume:/home/app/NinjaSushi/media
-      - ./certbot/www/:/var/www/certbot
-      - ./certbot/conf/:/etc/letsencrypt
+      - ./nginx:/etc/nginx/conf.d
+      - ./certbot/www:/var/www/certbot/
+      - ./certbot/conf/:/etc/nginx/ssl/
     ports:
       - "80:80"
       - "443:443"

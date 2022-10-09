@@ -26,8 +26,8 @@ SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = int(os.environ.get("DEBUG", default=0))
 
-ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS").split(" ")
-
+ALLOWED_HOSTS = ["ninja-sushi.shop"]
+CSRF_TRUSTED_ORIGINS = ['https://*.ninja-sushi.shop']
 
 # Application definition
 
@@ -161,4 +161,4 @@ CACHES = {
     }
 }
 
-CELERY_BROKER_URL = "amqp://rabbitmq"
+CELERY_BROKER_URL = "amqp://guest:guest@rabbitmq:5672//"

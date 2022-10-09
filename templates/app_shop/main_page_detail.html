@@ -7,7 +7,7 @@
     <div class="cards__container">
     {% for product in products %}
       <div class="cards__card">
-        <img class="cards__product-image" src="{{ product.image }}" alt="image">
+        <img class="cards__product-image" src="{{ product.image.url }}" alt="image">
         <p class="cards__product-name">{{ product.name }}</p>
         <p class="cards__product-characteristics">{{ product.weight }} г., {{ product.amount }} шт.</p>
         <p class="cards__product-composition">{{ product.composition }}</p>
