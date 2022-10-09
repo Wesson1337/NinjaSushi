@@ -55,14 +55,22 @@ services:
   nginx:
     build:
       context: ./nginx
+    restart: always
     volumes:
       - static_volume:/home/app/NinjaSushi/staticfiles
       - media_volume:/home/app/NinjaSushi/media
+      - ./certbot/www/:/var/www/certbot
+      - ./certbot/conf/:/etc/letsencrypt
     ports:
       - "80:80"
       - "443:443"
     depends_on:
       - web
+  certbot:
+    image: certbot/certbot
+    volumes:
+      - ./certbot/www/:/var/www/certbot
+      - ./certbot/conf/:/etc/letsencrypt
 
 volumes:
   static_volume:
