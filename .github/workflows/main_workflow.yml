@@ -16,8 +16,8 @@ jobs:
       - name: Setting up dev-project..
         run: docker compose up -d
       - name: Unit testing..
-        run: docker compose up exec -it web python manage.py test .
+        run: docker compose exec web python manage.py test .
       - name: Flake8 installing..
-        run: docker compose up exec -it web pip install flake8
+        run: docker compose exec web pip install flake8
       - name: Flake8 testing..
-        run: docker compose up exec -it web flake8 --extend-ignore=E501 .
+        run: docker compose exec web flake8 --extend-ignore=E501 .
