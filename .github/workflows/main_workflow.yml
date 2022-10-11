@@ -14,7 +14,7 @@ jobs:
           echo POSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD }} >> .env
           echo EMAIL_PASSWORD=${{ secrets.EMAIL_PASSWORD }} >> .env
       - name: Setting up dev-project..
-        run: docker compose up
+        run: docker compose up -d
       - name: Unit testing..
         run: docker compose up exec -it web python manage.py test .
       - name: Flake8 installing..
