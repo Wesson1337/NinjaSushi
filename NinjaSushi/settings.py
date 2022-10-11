@@ -26,7 +26,7 @@ SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = int(os.environ.get("DEBUG", default=0))
 
-ALLOWED_HOSTS = ["ninja-sushi.shop"]
+ALLOWED_HOSTS = ["ninja-sushi.shop", "localhost"]
 CSRF_TRUSTED_ORIGINS = ['https://*.ninja-sushi.shop']
 
 # Application definition
@@ -61,8 +61,7 @@ ROOT_URLCONF = 'NinjaSushi.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates']
-        ,
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

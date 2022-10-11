@@ -76,4 +76,3 @@ class Cart:
         self.cart = {}
         del self.session[settings.CART_SESSION_ID]
         self.session.modified = True
-

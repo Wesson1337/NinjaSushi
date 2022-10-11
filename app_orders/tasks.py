@@ -15,8 +15,8 @@ def order_created_email_task(order_id: int) -> int:
     order_list_text = '\n'.join(order_list)
     subject = f'Успешный заказ №{order_id}'
     message = f'''Дорогой {order.name}, ваш заказ №{order_id} был успешно создан. В ближайшее время ваш заказ ''' \
-              f'''доставит курьер. 
-Состав заказа: 
+              f'''доставит курьер.
+Состав заказа:
 {order_list_text}
 
 Итоговая стоимость заказа: {order.get_total_cost()}₽.'''

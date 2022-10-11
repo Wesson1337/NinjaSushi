@@ -69,7 +69,7 @@ class CartTest(TestCase):
         })
 
     def test_cart_iterations(self):
-        cart, get_request, product1 = self.cart, self.get_request, self.product1
+        cart, product1 = self.cart, self.product1
         for item in cart:
             self.assertIsInstance(item['product'], Product)
             product = item['product']

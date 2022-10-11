@@ -1,4 +1,3 @@
-from django.conf import settings
 from django.db import models
 
 from app_accounts.models import CustomUser
