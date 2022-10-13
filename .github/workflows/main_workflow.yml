@@ -1,5 +1,8 @@
 name: ninja_sushi
-on: [pull_request, push]
+on:
+  push:
+    branches:
+      - master
 jobs:
   test_project:
     runs-on: ubuntu-latest
