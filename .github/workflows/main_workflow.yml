@@ -35,5 +35,6 @@ jobs:
           script: |
             cd /home/app/NinjaSushi
             git pull https://github.com/Wesson1337/NinjaSushi
+            docker-compose -f docker-compose.prod.yml down
             docker-compose -f docker-compose.prod.yml up --build -d
             docker image prune -f
