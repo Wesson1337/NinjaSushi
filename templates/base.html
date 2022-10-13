@@ -12,6 +12,7 @@
 </head>
 <body>
   {% cart_length request as cart_length %}
+  {% url "app_shop:main_page" as main_page_url %}
   {% cache 600 header cart_length %}
     <header class="header">
       <a href="{% url "app_shop:main_page" %}"><div class="header__logo">
@@ -28,7 +29,11 @@
             <a class="nav-bar__text-link" href="/">Меню</a>
           </li>
           <li class="nav-bar__text-link-item">
-            <a class="nav-bar__text-link" href="#">Контакты</a>
+            {% if request.path != main_page_url %}
+              <a class="nav-bar__text-link" href="{% url "app_shop:main_page" %}">Контакты</a>
+            {% else %}
+              <a class="nav-bar__text-link" href="#bottom-info">Контакты</a>
+            {% endif %}
           </li>
         </ul>
         <div class="nav-bar__black-delimiter"></div>
@@ -50,7 +55,9 @@
       </nav>
     </header>
   {% endcache %}
-  {% block content %}{% endblock %}
+  <div class="content">
+    {% block content %}{% endblock %}
+  </div>
   {% cache 600 footer %}
     <footer class="footer">
       <div class="footer__container">
@@ -68,7 +75,11 @@
               <a class="footer__text-link" href="{% url "app_shop:main_page" %}">Меню</a>
             </li>
             <li class="footer__text-link-item">
-              <a class="footer__text-link" href="#">Контакты</a>
+              {% if request.path != main_page_url %}
+                <a class="footer__text-link" href="{% url "app_shop:main_page" %}">Контакты</a>
+              {% else %}
+                <a class="footer__text-link" href="#bottom-info">Контакты</a>
+              {% endif %}
             </li>
           </ul>
           <ul class="footer__text-link-list">
